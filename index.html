@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brandon Stevens, PMP — Senior Project & Technical Program Manager</title>
+<meta name="description" content="Brandon Stevens, PMP — Senior Project Manager & Technical Program Manager in Philadelphia. 10 years across energy, payments/FinTech, and healthcare. $25M–$75M portfolios." />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --black:#080808;
+  --white:#F5F3EE;
+  --gold:#C9922A;
+  --gold-dim:rgba(201,146,42,0.15);
+  --text-muted:rgba(245,243,238,0.55);
+  --border-light:#E4E0D9;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:auto;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--black);
+  color:var(--white);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+section{position:relative;}
+
+.display{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:0.01em;line-height:0.92;}
+.label{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.78rem;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.gold{color:var(--gold);}
+.gold-line{display:inline-block;width:60px;height:2px;background:var(--gold);vertical-align:middle;}
+
+.container{max-width:1320px;margin:0 auto;padding:0 6vw;width:100%;}
+
+/* ---------------- NAV ---------------- */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  padding:22px 0;transition:background .4s ease,backdrop-filter .4s ease,padding .4s ease;
+}
+nav.scrolled{
+  background:rgba(8,8,8,0.92);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  padding:14px 0;
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1320px;margin:0 auto;padding:0 6vw;}
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:0.04em;font-size:1.02rem;}
+.nav-brand .badge{
+  font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);
+  border:1px solid var(--gold);border-radius:3px;padding:2px 6px;font-weight:500;
+}
+.nav-links{display:flex;gap:34px;list-style:none;}
+.nav-links a{font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);transition:color .25s;font-weight:500;}
+.nav-links a:hover{color:var(--white);}
+.btn-hire{
+  border:1px solid var(--gold);color:var(--gold);background:transparent;
+  padding:11px 24px;border-radius:3px;font-size:0.78rem;letter-spacing:0.16em;
+  text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .3s,color .3s;
+}
+.btn-hire:hover{background:var(--gold);color:var(--black);}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+.nav-toggle span{display:block;width:26px;height:2px;background:var(--white);transition:.3s;}
+
+/* mobile overlay menu */
+.mobile-menu{
+  position:fixed;inset:0;z-index:1500;background:rgba(8,8,8,0.98);
+  backdrop-filter:blur(10px);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:28px;
+  transform:translateY(-100%);transition:transform .5s cubic-bezier(.7,0,.2,1);
+}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;color:var(--white);letter-spacing:0.04em;}
+.mobile-menu a.gold{color:var(--gold);}
+.mobile-close{position:absolute;top:24px;right:7vw;font-size:2rem;background:none;border:none;color:var(--white);cursor:pointer;}
+
+/* ---------------- HERO ---------------- */
+.hero{min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('https://images.unsplash.com/photo-1609972200027-e2b71c4b4b94?w=1920&q=85&fit=crop'),url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1920&q=85&fit=crop');
+  background-size:cover;background-position:center;will-change:transform;
+}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to right,rgba(8,8,8,0.92) 50%,rgba(8,8,8,0.4) 100%);
+}
+.hero-content{position:relative;z-index:2;width:100%;padding-top:60px;}
+.hero-tagline{display:flex;align-items:center;gap:14px;margin-bottom:26px;color:var(--gold);}
+.hero-name{font-size:clamp(7rem,16vw,18rem);margin:0;overflow:hidden;}
+.hero-name .line{display:block;overflow:hidden;}
+.hero-name .char{display:inline-block;will-change:transform;}
+.hero-sub{
+  margin-top:30px;font-size:1.1rem;line-height:1.6;color:rgba(245,243,238,0.82);
+  max-width:540px;font-weight:300;
+}
+.hero-sub strong{color:var(--white);font-weight:500;}
+.hero-btns{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--gold);color:var(--black);border:1px solid var(--gold);
+  padding:15px 32px;border-radius:3px;font-weight:700;letter-spacing:0.14em;
+  text-transform:uppercase;font-size:0.82rem;cursor:pointer;transition:.3s;
+}
+.btn-primary:hover{background:transparent;color:var(--gold);}
+.btn-ghost{
+  background:transparent;color:var(--white);border:1px solid rgba(245,243,238,0.3);
+  padding:15px 32px;border-radius:3px;font-weight:600;letter-spacing:0.14em;
+  text-transform:uppercase;font-size:0.82rem;cursor:pointer;transition:.3s;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.hero-linkedin{margin-top:54px;font-size:0.82rem;letter-spacing:0.1em;color:var(--text-muted);}
+.hero-linkedin a:hover{color:var(--gold);}
+.scroll-ind{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.scroll-ind .txt{font-size:0.6rem;letter-spacing:0.3em;color:var(--gold);}
+.scroll-line{width:1px;height:50px;background:rgba(201,146,42,0.3);position:relative;overflow:hidden;}
+.scroll-line::after{content:"";position:absolute;top:0;left:0;width:100%;height:40%;background:var(--gold);animation:scrollPulse 1.8s ease-in-out infinite;}
+@keyframes scrollPulse{0%{transform:translateY(-100%);}100%{transform:translateY(250%);}}
+
+/* ---------------- ABOUT ---------------- */
+.about{min-height:100vh;display:flex;align-items:center;background:var(--black);padding:120px 0;}
+.about-grid{display:grid;grid-template-columns:55% 45%;gap:60px;align-items:center;}
+.about-title{font-size:clamp(3rem,7vw,7rem);margin:18px 0 30px;}
+.about-body p{color:rgba(245,243,238,0.78);font-size:1.05rem;line-height:1.7;margin-bottom:18px;font-weight:300;max-width:560px;}
+.about-rule{width:100%;height:1px;background:var(--gold-dim);margin:34px 0;}
+.about-rule .fill{display:block;width:70px;height:2px;background:var(--gold);}
+.about-meta{display:grid;grid-template-columns:1fr 1fr;gap:26px 30px;}
+.about-meta dt{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-weight:500;}
+.about-meta dd{font-size:0.95rem;color:rgba(245,243,238,0.8);line-height:1.4;}
+.about-photo{position:relative;}
+.about-photo .frame{
+  position:relative;border:1px solid rgba(201,146,42,0.4);padding:10px;
+  background:linear-gradient(135deg,rgba(201,146,42,0.05),transparent);will-change:transform;
+}
+.about-photo .frame::before{
+  content:"";position:absolute;inset:-24px;z-index:-1;
+  background-image:linear-gradient(rgba(201,146,42,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,0.06) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.about-photo img{width:100%;height:560px;object-fit:cover;}
+.headshot-fallback{
+  width:100%;height:560px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#161616,#0c0c0c);
+}
+.headshot-fallback .initials{
+  width:160px;height:160px;border-radius:50%;border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;font-size:4.5rem;color:var(--gold);letter-spacing:0.05em;
+}
+
+/* ---------------- EXPERIENCE ---------------- */
+.exp-panel{min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+.exp-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;will-change:transform;height:120%;top:-10%;}
+.exp-overlay{position:absolute;inset:0;z-index:1;}
+.exp-panel.peco .exp-bg{background-image:url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1920&q=85&fit=crop');}
+.exp-panel.peco .exp-overlay{background:linear-gradient(to right,rgba(6,10,20,0.86),rgba(8,12,24,0.7));}
+.exp-panel.datacap .exp-bg{background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=85&fit=crop');}
+.exp-panel.datacap .exp-overlay{background:linear-gradient(to right,rgba(4,16,18,0.86),rgba(6,18,20,0.72));}
+.exp-panel.nextgen .exp-bg{background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&q=85&fit=crop');}
+.exp-panel.nextgen .exp-overlay{background:linear-gradient(to right,rgba(18,12,6,0.86),rgba(20,14,8,0.72));}
+.exp-content{position:relative;z-index:2;width:100%;max-width:960px;}
+.exp-num{position:absolute;top:90px;right:6vw;z-index:2;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:rgba(201,146,42,0.5);letter-spacing:0.1em;}
+.exp-label{color:var(--gold);margin-bottom:18px;}
+.exp-name{font-size:clamp(3.5rem,9vw,9rem);margin-bottom:14px;}
+.exp-role{color:rgba(245,243,238,0.7);font-size:1.05rem;margin-bottom:24px;font-weight:300;}
+.exp-hr{width:60px;height:2px;background:var(--gold);margin-bottom:34px;}
+.exp-stats{display:flex;gap:60px;flex-wrap:wrap;margin-bottom:30px;}
+.exp-stat .num{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,5vw,4rem);color:var(--white);line-height:1;}
+.exp-stat .num .gold{color:var(--gold);}
+.exp-stat .cap{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-top:8px;}
+.exp-keyline{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--gold);line-height:1.1;max-width:760px;margin-bottom:28px;}
+.exp-toggle{
+  background:none;border:1px solid rgba(245,243,238,0.25);color:var(--white);
+  padding:11px 22px;border-radius:3px;font-size:0.74rem;letter-spacing:0.16em;
+  text-transform:uppercase;cursor:pointer;transition:.3s;font-family:'DM Sans',sans-serif;font-weight:500;
+}
+.exp-toggle:hover{border-color:var(--gold);color:var(--gold);}
+.exp-bullets{
+  max-height:0;overflow:hidden;transition:max-height .6s ease,margin .6s ease,opacity .5s ease;opacity:0;
+  list-style:none;margin-top:0;max-width:720px;
+}
+.exp-bullets.open{max-height:600px;margin-top:28px;opacity:1;}
+.exp-bullets li{
+  position:relative;padding-left:24px;margin-bottom:14px;color:rgba(245,243,238,0.78);
+  line-height:1.55;font-weight:300;font-size:0.98rem;
+}
+.exp-bullets li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;background:var(--gold);border-radius:50%;}
+
+/* ---------------- SERVICES ---------------- */
+.services{padding:140px 0;overflow:hidden;}
+.services-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=85&fit=crop') center/cover;}
+.services-bg::after{content:"";position:absolute;inset:0;background:rgba(8,8,8,0.85);}
+.services-inner{position:relative;z-index:2;}
+.services-title{font-size:clamp(3rem,7vw,7rem);margin:16px 0 60px;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.svc-card{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(201,146,42,0.25);
+  border-radius:4px;padding:36px 32px;backdrop-filter:blur(8px);
+  transition:background .3s,border-color .3s,transform .3s;
+}
+.svc-card:hover{background:rgba(201,146,42,0.08);border-color:rgba(201,146,42,0.6);transform:translateY(-4px);}
+.svc-num{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold);margin-bottom:14px;}
+.svc-card h3{font-size:1.18rem;font-weight:700;margin-bottom:14px;line-height:1.25;}
+.svc-card p{color:var(--text-muted);font-size:0.92rem;line-height:1.6;font-weight:300;}
+
+/* ---------------- MARQUEE ---------------- */
+.marquee-sec{padding:90px 0;background:#060606;overflow:hidden;}
+.marquee{display:flex;white-space:nowrap;overflow:hidden;width:100%;}
+.marquee-track{display:flex;flex-shrink:0;align-items:center;will-change:transform;}
+.marquee-track span{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);letter-spacing:0.04em;padding:0 0;}
+.marquee-track .dot{color:rgba(201,146,42,0.45);padding:0 24px;}
+.marquee-left .marquee-track{animation:marqL 38s linear infinite;}
+.marquee-right .marquee-track{animation:marqR 52s linear infinite;}
+@keyframes marqL{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes marqR{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+.marquee-center{text-align:center;padding:54px 0;}
+.marquee-center .display{font-size:clamp(2rem,5vw,4rem);line-height:1.05;}
+
+/* ---------------- IMPACT ---------------- */
+.impact{min-height:100vh;display:flex;align-items:center;overflow:hidden;text-align:center;}
+.impact-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=85&fit=crop') center/cover;}
+.impact-bg::after{content:"";position:absolute;inset:0;background:rgba(8,8,8,0.9);}
+.impact-inner{position:relative;z-index:2;width:100%;}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;}
+.impact-stat .num{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,8vw,8rem);line-height:0.9;color:var(--white);}
+.impact-stat .num .gold{color:var(--gold);}
+.impact-stat .cap{font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:16px;line-height:1.4;}
+.impact-note{margin-top:54px;font-style:italic;color:var(--text-muted);font-size:0.95rem;}
+
+/* ---------------- PRODUCTS ---------------- */
+.products{background:var(--white);color:var(--black);padding:140px 0;}
+.products-title{font-size:clamp(3rem,7vw,7rem);color:var(--black);margin-bottom:18px;}
+.products-sub{color:rgba(8,8,8,0.6);font-size:1.05rem;max-width:540px;margin-bottom:56px;font-weight:300;}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.prod-card{
+  background:#fff;border:1px solid var(--border-light);border-radius:4px;padding:32px;
+  display:flex;flex-direction:column;min-height:240px;transition:border-color .3s,transform .3s;
+}
+.prod-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.prod-cat{align-self:flex-end;font-size:0.64rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:600;border:1px solid rgba(201,146,42,0.4);padding:4px 9px;border-radius:3px;}
+.prod-card h3{font-size:1.24rem;font-weight:700;margin:20px 0 12px;line-height:1.25;}
+.prod-card p{color:rgba(8,8,8,0.6);font-size:0.92rem;line-height:1.6;font-weight:300;flex:1;}
+.prod-foot{display:flex;align-items:center;justify-content:space-between;margin-top:22px;}
+.prod-price{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--black);}
+.prod-link{color:var(--gold);font-weight:600;font-size:0.88rem;letter-spacing:0.04em;}
+.prod-link:hover{text-decoration:underline;}
+
+/* ---------------- CONTACT ---------------- */
+.contact{min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:120px 0;}
+.contact-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=85&fit=crop') center/cover;}
+.contact-bg::after{content:"";position:absolute;inset:0;background:rgba(8,8,8,0.88);}
+.contact-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;width:100%;}
+.contact-title{font-size:clamp(3.5rem,8vw,8rem);margin-bottom:30px;}
+.contact-text{color:rgba(245,243,238,0.75);font-size:1.05rem;line-height:1.7;max-width:460px;font-weight:300;}
+.contact-rule{width:70px;height:2px;background:var(--gold);margin:34px 0;}
+.contact-info dl{display:grid;grid-template-columns:120px 1fr;gap:18px 20px;align-items:baseline;}
+.contact-info dt{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;}
+.contact-info dd a{color:rgba(245,243,238,0.85);font-size:0.98rem;transition:color .25s;}
+.contact-info dd a:hover{color:var(--gold);}
+.contact-form{
+  background:rgba(255,255,255,0.05);border:1px solid rgba(201,146,42,0.2);
+  border-radius:6px;padding:40px;backdrop-filter:blur(8px);
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.contact-form label{display:block;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);margin:18px 0 8px;font-weight:500;}
+.contact-form input,.contact-form select,.contact-form textarea{
+  width:100%;background:rgba(8,8,8,0.5);border:1px solid rgba(245,243,238,0.15);
+  border-radius:3px;padding:13px 14px;color:var(--white);font-family:'DM Sans',sans-serif;
+  font-size:0.95rem;transition:border-color .25s;
+}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:none;border-color:var(--gold);}
+.contact-form textarea{resize:vertical;min-height:110px;}
+.contact-form select option{background:#0c0c0c;}
+.btn-send{
+  width:100%;margin-top:24px;background:var(--gold);color:var(--black);border:none;
+  padding:16px;border-radius:3px;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;
+  letter-spacing:0.1em;cursor:pointer;transition:.3s;
+}
+.btn-send:hover{background:#e0a838;}
+.form-success{display:none;text-align:center;padding:30px 10px;}
+.form-success.show{display:block;}
+.form-success .check{font-size:3rem;color:var(--gold);margin-bottom:14px;}
+.form-success p{color:rgba(245,243,238,0.8);font-size:1.05rem;}
+
+/* ---------------- FOOTER ---------------- */
+footer{background:#050505;padding:34px 0;border-top:1px solid rgba(245,243,238,0.06);}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.footer-brand{font-weight:700;letter-spacing:0.06em;}
+.footer-center{color:var(--text-muted);font-size:0.86rem;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{color:var(--text-muted);font-size:0.86rem;transition:color .25s;}
+.footer-links a:hover{color:var(--gold);}
+
+/* reveal helper */
+.reveal-line{will-change:transform,opacity;}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media(max-width:980px){
+  .nav-links{display:none;}
+  .btn-hire{display:none;}
+  .nav-toggle{display:flex;}
+  .about-grid{grid-template-columns:1fr;gap:50px;}
+  .about-photo{order:-1;}
+  .about-photo img,.headshot-fallback{height:420px;}
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .products-grid{grid-template-columns:repeat(2,1fr);}
+  .contact-inner{grid-template-columns:1fr;gap:50px;}
+}
+@media(max-width:680px){
+  .hero-name{font-size:clamp(4rem,16vw,7rem);}
+  .hero-bg{background-position:center;}
+  .exp-stats{gap:34px;}
+  .impact-grid{grid-template-columns:repeat(2,1fr);gap:46px 24px;}
+  .services-grid{grid-template-columns:1fr;}
+  .products-grid{grid-template-columns:1fr;}
+  .about-meta{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .marquee-track span{font-size:1.5rem;}
+  .footer-inner{flex-direction:column;text-align:center;}
+  .exp-num{top:70px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">BRANDON STEVENS <span class="badge">PMP</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="btn-hire" onclick="document.querySelector('#contact').scrollIntoView()">Hire Me</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#services">Services</a>
+  <a href="#products">Products</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="gold">Hire Me</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <div class="hero-tagline">
+      <span class="gold-line"></span>
+      <span class="label">Philadelphia, PA · PMP Certified</span>
+    </div>
+    <h1 class="hero-name display" id="heroName">
+      <span class="line" data-text="BRANDON"></span>
+      <span class="line" data-text="STEVENS"></span>
+    </h1>
+    <p class="hero-sub" id="heroSub">
+      <strong>Senior Project Manager &amp; Technical Program Manager</strong><br>
+      10 years. Three industries. Fortune 100 to startup.<br>
+      The work changes. The standard doesn't.
+    </p>
+    <div class="hero-btns" id="heroBtns">
+      <button class="btn-primary" onclick="document.querySelector('#contact').scrollIntoView()">Hire Me</button>
+      <button class="btn-ghost" onclick="document.querySelector('#experience').scrollIntoView()">View My Work ↓</button>
+    </div>
+    <div class="hero-linkedin" id="heroLi">
+      <a href="https://www.linkedin.com/in/brandon-stevens-pmp" target="_blank" rel="noopener">linkedin.com/in/brandon-stevens-pmp</a>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <div class="scroll-line"></div>
+    <span class="txt">SCROLL</span>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-body">
+        <span class="label gold reveal-line">About</span>
+        <h2 class="about-title display reveal-line">DELIVERING<br>WHAT WAS<br>PROMISED.</h2>
+        <p class="reveal-line">I'm Brandon Stevens — a PMP-certified Senior Project Manager and Technical Program Manager based in Philadelphia.</p>
+        <p class="reveal-line">Over the past decade I've owned end-to-end delivery of enterprise programs at a Fortune 100 energy company, a payments middleware firm, and a health IT vendor. My work spans $25M–$75M portfolios, 15–50 concurrent projects, and teams spread across engineering, finance, legal, and operations.</p>
+        <p class="reveal-line">I don't just report status. I surface problems early, structure the tradeoffs, and equip leaders to make confident decisions.</p>
+        <div class="about-rule reveal-line"><span class="fill"></span></div>
+        <dl class="about-meta">
+          <div class="reveal-line"><dt>Certification</dt><dd>PMP — Project Management Professional (PMI)</dd></div>
+          <div class="reveal-line"><dt>Education</dt><dd>B.A., Corporate Communications &amp; Business · Penn State</dd></div>
+          <div class="reveal-line"><dt>Availability</dt><dd>FTE &amp; Contract · W-2 / 1099 / SOW</dd></div>
+          <div class="reveal-line"><dt>Location</dt><dd>Philadelphia, PA · Remote available</dd></div>
+        </dl>
+      </div>
+      <div class="about-photo">
+        <div class="frame" id="aboutPhoto">
+          <img src="./headshot.jpg" alt="Brandon Stevens" onerror="this.parentNode.innerHTML='<div class=\'headshot-fallback\'><div class=\'initials\'>BS</div></div>';" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<div id="experience"></div>
+
+<!-- Panel A: PECO -->
+<section class="exp-panel peco">
+  <div class="exp-bg"></div>
+  <div class="exp-overlay"></div>
+  <span class="exp-num">01</span>
+  <div class="exp-content container">
+    <span class="label exp-label reveal-line">2022 – Present · Fortune 100</span>
+    <h2 class="exp-name display reveal-line">PECO ENERGY</h2>
+    <p class="exp-role reveal-line">Enterprise PMO Governance &amp; Compliance · Philadelphia, PA</p>
+    <div class="exp-hr"></div>
+    <div class="exp-stats">
+      <div class="exp-stat"><div class="num"><span class="gold">$</span><span class="count" data-target="75">0</span><span class="gold">M</span></div><div class="cap">Portfolio</div></div>
+      <div class="exp-stat"><div class="num"><span class="count" data-target="50">0</span><span class="gold">+</span></div><div class="cap">Projects / Year</div></div>
+      <div class="exp-stat"><div class="num"><span class="gold">$</span><span class="count" data-target="1.3" data-decimals="1">0</span><span class="gold">M</span></div><div class="cap">Cost Avoidance</div></div>
+    </div>
+    <p class="exp-keyline reveal-line">Designed the governance framework that routes every major project through PECO's executive gate.</p>
+    <button class="exp-toggle" data-toggle>Read More +</button>
+    <ul class="exp-bullets">
+      <li>Reduced late-stage rework by 27% through earlier risk identification and tighter stage-gate routing.</li>
+      <li>Improved governance tier alignment by 72% across the portfolio.</li>
+      <li>Increased on-time gate approvals by 80% by delivering decision-ready documentation with tradeoff analysis.</li>
+      <li>Chaired the CCB that drove $1.3M+ in cost avoidance while maintaining dependency maps for executive review.</li>
+      <li>Drove AI productivity tool adoption (Microsoft Copilot, ChatGPT) across the enterprise PMO.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Panel B: Datacap -->
+<section class="exp-panel datacap">
+  <div class="exp-bg"></div>
+  <div class="exp-overlay"></div>
+  <span class="exp-num">02</span>
+  <div class="exp-content container">
+    <span class="label exp-label reveal-line">2017 – 2022 · Payments &amp; FinTech</span>
+    <h2 class="exp-name display reveal-line">DATACAP SYSTEMS</h2>
+    <p class="exp-role reveal-line">Implementation Project Manager · Chalfont, PA</p>
+    <div class="exp-hr"></div>
+    <div class="exp-stats">
+      <div class="exp-stat"><div class="num"><span class="count" data-target="15">0</span><span class="gold">+</span></div><div class="cap">Concurrent Projects</div></div>
+      <div class="exp-stat"><div class="num"><span class="count" data-target="95">0</span><span class="gold">%</span></div><div class="cap">On-Time Rate</div></div>
+      <div class="exp-stat"><div class="num"><span class="gold">$</span><span class="count" data-target="200">0</span><span class="gold">K+</span></div><div class="cap">New Revenue</div></div>
+    </div>
+    <p class="exp-keyline reveal-line">15 concurrent integration projects. 95% delivered on time. Every year for five years.</p>
+    <button class="exp-toggle" data-toggle>Read More +</button>
+    <ul class="exp-bullets">
+      <li>Led end-to-end delivery of payments and FinTech integration projects for enterprise partners and acquirers.</li>
+      <li>Built a partner prioritization model using historical performance and ROI analysis that contributed $200K+ in recurring revenue.</li>
+      <li>Managed a $1M+ gateway asset portfolio with standardized intake, change control, and weekly reporting.</li>
+      <li>Shortened onboarding cycle times by partnering with product and engineering on backlog grooming and release planning.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Panel C: NextGen -->
+<section class="exp-panel nextgen">
+  <div class="exp-bg"></div>
+  <div class="exp-overlay"></div>
+  <span class="exp-num">03</span>
+  <div class="exp-content container">
+    <span class="label exp-label reveal-line">2014 – 2016 · Healthcare &amp; EHR</span>
+    <h2 class="exp-name display reveal-line">NEXTGEN HEALTHCARE</h2>
+    <p class="exp-role reveal-line">Project Coordinator, EHR/EMR · Horsham, PA</p>
+    <div class="exp-hr"></div>
+    <div class="exp-stats">
+      <div class="exp-stat"><div class="num"><span class="count" data-target="17">0</span></div><div class="cap">Projects</div></div>
+      <div class="exp-stat"><div class="num"><span class="count" data-target="25">0</span></div><div class="cap">Clinics</div></div>
+      <div class="exp-stat"><div class="num gold" style="font-size:clamp(1.8rem,3.4vw,2.6rem);">HIPAA</div><div class="cap">Compliant</div></div>
+    </div>
+    <p class="exp-keyline reveal-line">EHR go-lives across 25 healthcare networks, zero compliance violations.</p>
+    <button class="exp-toggle" data-toggle>Read More +</button>
+    <ul class="exp-bullets">
+      <li>Coordinated 17 multi-site EHR/EMR implementation projects across 25 clinics and healthcare networks.</li>
+      <li>Ensured adherence to HIPAA and HL7 standards through every deployment.</li>
+      <li>Supported end-user training and post-go-live adoption in regulated healthcare environments.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="services-bg"></div>
+  <div class="services-inner container">
+    <span class="label gold reveal-line">Services</span>
+    <h2 class="services-title display reveal-line">WHAT I<br>DELIVER</h2>
+    <div class="services-grid">
+      <div class="svc-card"><div class="svc-num">01</div><h3>Enterprise Project &amp; Program Management</h3><p>End-to-end ownership of cross-functional programs. $25M–$75M portfolios. 15–50+ concurrent projects. Multi-year, multi-stakeholder delivery.</p></div>
+      <div class="svc-card"><div class="svc-num">02</div><h3>Technical Program Management (TPM)</h3><p>Embedded with engineering and product. Backlog grooming, release planning, dependency mapping, executive reporting. Translating complexity into confident decisions.</p></div>
+      <div class="svc-card"><div class="svc-num">03</div><h3>PMO Governance &amp; Stage-Gate</h3><p>Design and build of PMO infrastructure, project complexity models, Change Control Boards, and stage-gate routing. Built for Fortune 100. Scalable to your organization.</p></div>
+      <div class="svc-card"><div class="svc-num">04</div><h3>AI &amp; Automation Program Delivery</h3><p>GenAI and workflow automation programs from problem definition to enterprise rollout. Coordinating technology, data, risk, and legal across the delivery lifecycle.</p></div>
+      <div class="svc-card"><div class="svc-num">05</div><h3>Agile Delivery &amp; Process Improvement</h3><p>Scrum, SAFe, Kanban, hybrid, and stage-gate. Sprint facilitation, velocity improvement, and delivery process redesign in both enterprise and startup environments.</p></div>
+      <div class="svc-card"><div class="svc-num">06</div><h3>Fractional PM &amp; Contract Consulting</h3><p>Senior-level PM oversight without a full-time hire. Retainer, T&amp;M, or fixed-bid SOW. Remote-first. Rapid onboarding.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<section class="marquee-sec">
+  <div class="marquee marquee-left">
+    <div class="marquee-track" id="trackInd"></div>
+  </div>
+  <div class="marquee-center">
+    <div class="display">10 YEARS OF DELIVERY ACROSS<br><span class="gold">EVERY INDUSTRY THAT MATTERS</span></div>
+  </div>
+  <div class="marquee marquee-right">
+    <div class="marquee-track" id="trackTool"></div>
+  </div>
+</section>
+
+<!-- ============ IMPACT ============ -->
+<section class="impact">
+  <div class="impact-bg"></div>
+  <div class="impact-inner container">
+    <div class="impact-grid">
+      <div class="impact-stat"><div class="num"><span class="count" data-target="10">0</span><span class="gold">+</span></div><div class="cap">Years<br>Experience</div></div>
+      <div class="impact-stat"><div class="num"><span class="gold">$</span><span class="count" data-target="75">0</span><span class="gold">M</span></div><div class="cap">Max<br>Portfolio</div></div>
+      <div class="impact-stat"><div class="num"><span class="count" data-target="95">0</span><span class="gold">%</span></div><div class="cap">On-Time<br>Delivery</div></div>
+      <div class="impact-stat"><div class="num"><span class="gold">$</span><span class="count" data-target="1.3" data-decimals="1">0</span><span class="gold">M</span></div><div class="cap">Cost<br>Avoidance</div></div>
+    </div>
+    <p class="impact-note">Numbers from real engagements. Not estimates.</p>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="products" id="products">
+  <div class="container">
+    <h2 class="products-title display reveal-line">RESOURCES<br>BUILT FROM<br>THE FIELD</h2>
+    <p class="products-sub reveal-line">Tools and frameworks from ten years of real project delivery. Ready to use on day one.</p>
+    <div class="products-grid">
+      <div class="prod-card"><span class="prod-cat">Templates</span><h3>Complete PM Template Bundle</h3><p>30+ templates: charters, RACI, risk registers, stage-gate checklists, status reports.</p><div class="prod-foot"><span class="prod-price">$49</span><a class="prod-link" href="#contact">Get Access →</a></div></div>
+      <div class="prod-card"><span class="prod-cat">Framework</span><h3>PMO Setup Playbook</h3><p>Build a PMO from scratch. The governance model used at a Fortune 100 utility, adapted for any organization.</p><div class="prod-foot"><span class="prod-price">$79</span><a class="prod-link" href="#contact">Get Access →</a></div></div>
+      <div class="prod-card"><span class="prod-cat">Agile</span><h3>Agile Sprint Starter Kit</h3><p>Backlog templates, definition of done, sprint review agendas, velocity tracking. Everything for your first proper sprints.</p><div class="prod-foot"><span class="prod-price">$29</span><a class="prod-link" href="#contact">Get Access →</a></div></div>
+      <div class="prod-card"><span class="prod-cat">Career</span><h3>PM Career Roadmap Guide</h3><p>Certifications, portfolio building, salary negotiation, and how to break into freelance PM work.</p><div class="prod-foot"><span class="prod-price">$39</span><a class="prod-link" href="#contact">Get Access →</a></div></div>
+      <div class="prod-card"><span class="prod-cat">Course</span><h3>Freelance PM Masterclass</h3><p>Land your first contract, price your services, manage clients, build independence.</p><div class="prod-foot"><span class="prod-price">$149</span><a class="prod-link" href="#contact">Get Access →</a></div></div>
+      <div class="prod-card"><span class="prod-cat">Free</span><h3>Project Kickoff Checklist</h3><p>The 30-day checklist I use on every new engagement. Download instantly.</p><div class="prod-foot"><span class="prod-price">Free</span><a class="prod-link" href="#contact">Get Access →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="contact-bg"></div>
+  <div class="contact-inner container">
+    <div>
+      <h2 class="contact-title display reveal-line">LET'S<br>WORK<br>TOGETHER.</h2>
+      <p class="contact-text reveal-line">Whether you're staffing a critical program, need a fractional PM for a complex initiative, or want to discuss a consulting engagement — I respond to every message within 24 hours.</p>
+      <div class="contact-rule"></div>
+      <div class="contact-info">
+        <dl>
+          <dt>Email</dt><dd><a href="mailto:BrandonStevensPM@gmail.com">BrandonStevensPM@gmail.com</a></dd>
+          <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/brandon-stevens-pmp" target="_blank" rel="noopener">linkedin.com/in/brandon-stevens-pmp</a></dd>
+          <dt>Location</dt><dd><span style="color:rgba(245,243,238,0.85);">Philadelphia, PA · Remote available</span></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="contact-form">
+      <form id="contactForm">
+        <div class="form-row">
+          <div><label>First Name</label><input type="text" name="first" required /></div>
+          <div><label>Last Name</label><input type="text" name="last" required /></div>
+        </div>
+        <label>Email</label>
+        <input type="email" name="email" required />
+        <label>Engagement Type</label>
+        <select name="engagement">
+          <option>Full-Time Employment</option>
+          <option>Contract</option>
+          <option>Fractional PM</option>
+          <option>Digital Product</option>
+          <option>Other</option>
+        </select>
+        <label>Message</label>
+        <textarea name="message" required></textarea>
+        <button type="submit" class="btn-send">Send Message</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="check">✓</div>
+        <p>Message sent. I'll be in touch shortly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">BRANDON STEVENS PMP</div>
+    <div class="footer-center">© 2026 · Philadelphia, PA</div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/brandon-stevens-pmp" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:BrandonStevensPM@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+<script>
+/* ---------- Smooth scroll (Lenis) ---------- */
+let lenis;
+if(window.Lenis){
+  lenis = new Lenis({lerp:0.1,smoothWheel:true});
+  function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
+  requestAnimationFrame(raf);
+  if(window.ScrollTrigger){
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add((t)=>{lenis.raf(t*1000);});
+    gsap.ticker.lagSmoothing(0);
+  }
+  // anchor links via lenis
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();lenis.scrollTo(t,{offset:-10});}
+    });
+  });
+}
+
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- Nav scrolled state ---------- */
+const nav=document.getElementById('nav');
+const onScroll=()=>{nav.classList.toggle('scrolled',window.scrollY>20);};
+window.addEventListener('scroll',onScroll);onScroll();
+
+/* ---------- Mobile menu ---------- */
+const mm=document.getElementById('mobileMenu');
+document.getElementById('navToggle').addEventListener('click',()=>mm.classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click',()=>mm.classList.remove('open'));
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+
+/* ---------- Hero load animation ---------- */
+// split name lines into chars
+document.querySelectorAll('#heroName .line').forEach(line=>{
+  const text=line.getAttribute('data-text');
+  line.innerHTML='';
+  [...text].forEach(ch=>{
+    const s=document.createElement('span');
+    s.className='char';s.textContent=ch;
+    line.appendChild(s);
+  });
+});
+const tl=gsap.timeline({defaults:{ease:'power4.out'}});
+tl.from('#heroName .char',{yPercent:120,opacity:0,duration:1.2,stagger:0.04})
+  .from('#heroSub',{y:30,opacity:0,duration:0.9},'+=0.0')
+  .from('#heroBtns',{y:30,opacity:0,duration:0.8},'-=0.4')
+  .from('#heroLi',{opacity:0,duration:0.8},'-=0.5');
+
+// Ken Burns on hero bg
+gsap.fromTo('#heroBg',{scale:1.08},{scale:1,duration:8,ease:'power1.out'});
+
+/* ---------- Generic heading / line reveals ---------- */
+gsap.utils.toArray('.reveal-line').forEach(el=>{
+  gsap.from(el,{
+    y:60,opacity:0,duration:1,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 88%'}
+  });
+});
+
+/* ---------- Stagger cards ---------- */
+[['.services-grid','.svc-card'],['.products-grid','.prod-card']].forEach(([grid,item])=>{
+  gsap.from(grid+' '+item,{
+    y:40,opacity:0,duration:0.7,ease:'power3.out',stagger:0.08,
+    scrollTrigger:{trigger:grid,start:'top 82%'}
+  });
+});
+
+/* ---------- Parallax experience backgrounds ---------- */
+gsap.utils.toArray('.exp-panel').forEach(panel=>{
+  const bg=panel.querySelector('.exp-bg');
+  gsap.to(bg,{yPercent:18,ease:'none',scrollTrigger:{trigger:panel,start:'top bottom',end:'bottom top',scrub:true}});
+});
+
+/* ---------- About photo parallax ---------- */
+const ap=document.getElementById('aboutPhoto');
+if(ap){
+  gsap.to(ap,{yPercent:-12,ease:'none',scrollTrigger:{trigger:'#about',start:'top bottom',end:'bottom top',scrub:true}});
+}
+
+/* ---------- CountUp numbers ---------- */
+gsap.utils.toArray('.count').forEach(el=>{
+  const target=parseFloat(el.getAttribute('data-target'));
+  const decimals=parseInt(el.getAttribute('data-decimals')||'0',10);
+  const obj={v:0};
+  ScrollTrigger.create({
+    trigger:el,start:'top 88%',once:true,
+    onEnter:()=>{
+      gsap.to(obj,{v:target,duration:1.5,ease:'power2.out',
+        onUpdate:()=>{el.textContent=obj.v.toFixed(decimals);}});
+    }
+  });
+});
+
+/* ---------- Experience Read More toggles ---------- */
+document.querySelectorAll('[data-toggle]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const ul=btn.parentNode.querySelector('.exp-bullets');
+    const open=ul.classList.toggle('open');
+    btn.textContent=open?'Read Less −':'Read More +';
+    if(lenis)setTimeout(()=>ScrollTrigger.refresh(),650);
+  });
+});
+
+/* ---------- Build marquee tracks (duplicated for seamless loop) ---------- */
+function buildMarquee(id,items){
+  const track=document.getElementById(id);
+  const build=()=>{
+    items.forEach(t=>{
+      const s=document.createElement('span');s.textContent=t;track.appendChild(s);
+      const d=document.createElement('span');d.className='dot';d.textContent='·';track.appendChild(d);
+    });
+  };
+  build();build(); // duplicate for -50% loop
+}
+buildMarquee('trackInd',['ENERGY & UTILITIES','PAYMENTS & FINTECH','HEALTHCARE & EHR','FINANCIAL SERVICES','ENTERPRISE SAAS','INSURANCE','PHARMA/LIFE SCIENCES']);
+buildMarquee('trackTool',['JIRA','SMARTSHEET','MS PROJECT','PRIMAVERA P6','CONFLUENCE','SERVICENOW','POWER BI','TABLEAU','SALESFORCE','MICROSOFT COPILOT','SHAREPOINT','SAP']);
+
+/* ---------- Contact form ---------- */
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  document.getElementById('contactForm').style.display='none';
+  document.getElementById('formSuccess').classList.add('show');
+});
+</script>
+</body>
+</html>
