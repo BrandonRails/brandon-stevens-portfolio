@@ -1,1447 +1,780 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brandon Stevens, PMP — Senior Project Manager</title>
-  <meta name="description" content="Brandon Stevens, PMP — Senior Project Manager and Technical Program Manager based in Philadelphia. 10+ years delivering enterprise programs across energy, fintech, and healthcare." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brandon Stevens, PMP — Senior Project & Technical Program Manager</title>
+<meta name="description" content="Brandon Stevens, PMP — Senior Project Manager & Technical Program Manager in Philadelphia. 10 years across energy, payments/FinTech, and healthcare. $25M–$75M portfolios." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
 
-  <style>
-    /* ─── Base ─── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<style>
+:root{
+  --black:#080808;
+  --white:#F5F3EE;
+  --gold:#C9922A;
+  --gold-dim:rgba(201,146,42,0.15);
+  --text-muted:rgba(245,243,238,0.55);
+  --border-light:#E4E0D9;
+}
 
-    :root {
-      --cream:    #F7F5F1;
-      --white:    #FFFFFF;
-      --ink:      #0E0E0E;
-      --ink-2:    #3A3A3A;
-      --ink-3:    #6A6A6A;
-      --rule:     #E4E0D9;
-      --gold:     #B08A4E;
-      --gold-lt:  #F0E6D3;
-      --slate:    #1C3148;
-      --link:     #1C3148;
-    }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:auto;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--black);
+  color:var(--white);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+section{position:relative;}
 
-    html { scroll-behavior: smooth; }
+.display{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:0.01em;line-height:0.92;}
+.label{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.78rem;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.gold{color:var(--gold);}
+.gold-line{display:inline-block;width:60px;height:2px;background:var(--gold);vertical-align:middle;}
 
-    body {
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.6;
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-    }
+.container{max-width:1320px;margin:0 auto;padding:0 6vw;width:100%;}
 
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    p { line-height: 1.75; }
+/* ---------------- NAV ---------------- */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  padding:22px 0;transition:background .4s ease,backdrop-filter .4s ease,padding .4s ease;
+}
+nav.scrolled{
+  background:rgba(8,8,8,0.92);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  padding:14px 0;
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1320px;margin:0 auto;padding:0 6vw;}
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:0.04em;font-size:1.02rem;}
+.nav-brand .badge{
+  font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);
+  border:1px solid var(--gold);border-radius:3px;padding:2px 6px;font-weight:500;
+}
+.nav-links{display:flex;gap:34px;list-style:none;}
+.nav-links a{font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);transition:color .25s;font-weight:500;}
+.nav-links a:hover{color:var(--white);}
+.btn-hire{
+  border:1px solid var(--gold);color:var(--gold);background:transparent;
+  padding:11px 24px;border-radius:3px;font-size:0.78rem;letter-spacing:0.16em;
+  text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .3s,color .3s;
+}
+.btn-hire:hover{background:var(--gold);color:var(--black);}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+.nav-toggle span{display:block;width:26px;height:2px;background:var(--white);transition:.3s;}
 
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 32px;
-    }
+/* mobile overlay menu */
+.mobile-menu{
+  position:fixed;inset:0;z-index:1500;background:rgba(8,8,8,0.98);
+  backdrop-filter:blur(10px);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:28px;
+  transform:translateY(-100%);transition:transform .5s cubic-bezier(.7,0,.2,1);
+}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;color:var(--white);letter-spacing:0.04em;}
+.mobile-menu a.gold{color:var(--gold);}
+.mobile-close{position:absolute;top:24px;right:7vw;font-size:2rem;background:none;border:none;color:var(--white);cursor:pointer;}
 
-    /* ─── Nav ─── */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 0 32px;
-      background: rgba(247, 245, 241, 0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s;
-    }
-    header.scrolled { border-bottom-color: var(--rule); }
+/* ---------------- HERO ---------------- */
+.hero{min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('https://images.unsplash.com/photo-1609972200027-e2b71c4b4b94?w=1920&q=85&fit=crop'),url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1920&q=85&fit=crop');
+  background-size:cover;background-position:center;will-change:transform;
+}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to right,rgba(8,8,8,0.92) 50%,rgba(8,8,8,0.4) 100%);
+}
+.hero-content{position:relative;z-index:2;width:100%;padding-top:60px;}
+.hero-tagline{display:flex;align-items:center;gap:14px;margin-bottom:26px;color:var(--gold);}
+.hero-name{font-size:clamp(7rem,16vw,18rem);margin:0;overflow:hidden;}
+.hero-name .line{display:block;overflow:hidden;}
+.hero-name .char{display:inline-block;will-change:transform;}
+.hero-sub{
+  margin-top:30px;font-size:1.1rem;line-height:1.6;color:rgba(245,243,238,0.82);
+  max-width:540px;font-weight:300;
+}
+.hero-sub strong{color:var(--white);font-weight:500;}
+.hero-btns{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--gold);color:var(--black);border:1px solid var(--gold);
+  padding:15px 32px;border-radius:3px;font-weight:700;letter-spacing:0.14em;
+  text-transform:uppercase;font-size:0.82rem;cursor:pointer;transition:.3s;
+}
+.btn-primary:hover{background:transparent;color:var(--gold);}
+.btn-ghost{
+  background:transparent;color:var(--white);border:1px solid rgba(245,243,238,0.3);
+  padding:15px 32px;border-radius:3px;font-weight:600;letter-spacing:0.14em;
+  text-transform:uppercase;font-size:0.82rem;cursor:pointer;transition:.3s;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.hero-linkedin{margin-top:54px;font-size:0.82rem;letter-spacing:0.1em;color:var(--text-muted);}
+.hero-linkedin a:hover{color:var(--gold);}
+.scroll-ind{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.scroll-ind .txt{font-size:0.6rem;letter-spacing:0.3em;color:var(--gold);}
+.scroll-line{width:1px;height:50px;background:rgba(201,146,42,0.3);position:relative;overflow:hidden;}
+.scroll-line::after{content:"";position:absolute;top:0;left:0;width:100%;height:40%;background:var(--gold);animation:scrollPulse 1.8s ease-in-out infinite;}
+@keyframes scrollPulse{0%{transform:translateY(-100%);}100%{transform:translateY(250%);}}
 
-    nav {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
+/* ---------------- ABOUT ---------------- */
+.about{min-height:100vh;display:flex;align-items:center;background:var(--black);padding:120px 0;}
+.about-grid{display:grid;grid-template-columns:55% 45%;gap:60px;align-items:center;}
+.about-title{font-size:clamp(3rem,7vw,7rem);margin:18px 0 30px;}
+.about-body p{color:rgba(245,243,238,0.78);font-size:1.05rem;line-height:1.7;margin-bottom:18px;font-weight:300;max-width:560px;}
+.about-rule{width:100%;height:1px;background:var(--gold-dim);margin:34px 0;}
+.about-rule .fill{display:block;width:70px;height:2px;background:var(--gold);}
+.about-meta{display:grid;grid-template-columns:1fr 1fr;gap:26px 30px;}
+.about-meta dt{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-weight:500;}
+.about-meta dd{font-size:0.95rem;color:rgba(245,243,238,0.8);line-height:1.4;}
+.about-photo{position:relative;}
+.about-photo .frame{
+  position:relative;border:1px solid rgba(201,146,42,0.4);padding:10px;
+  background:linear-gradient(135deg,rgba(201,146,42,0.05),transparent);will-change:transform;
+}
+.about-photo .frame::before{
+  content:"";position:absolute;inset:-24px;z-index:-1;
+  background-image:linear-gradient(rgba(201,146,42,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,0.06) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.about-photo img{width:100%;height:560px;object-fit:cover;}
+.headshot-fallback{
+  width:100%;height:560px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#161616,#0c0c0c);
+}
+.headshot-fallback .initials{
+  width:160px;height:160px;border-radius:50%;border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;font-size:4.5rem;color:var(--gold);letter-spacing:0.05em;
+}
 
-    .nav-name {
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-    }
-    .nav-name span {
-      font-weight: 400;
-      color: var(--gold);
-      margin-left: 4px;
-    }
+/* ---------------- EXPERIENCE ---------------- */
+.exp-panel{min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+.exp-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;will-change:transform;height:120%;top:-10%;}
+.exp-overlay{position:absolute;inset:0;z-index:1;}
+.exp-panel.peco .exp-bg{background-image:url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1920&q=85&fit=crop');}
+.exp-panel.peco .exp-overlay{background:linear-gradient(to right,rgba(6,10,20,0.86),rgba(8,12,24,0.7));}
+.exp-panel.datacap .exp-bg{background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=85&fit=crop');}
+.exp-panel.datacap .exp-overlay{background:linear-gradient(to right,rgba(4,16,18,0.86),rgba(6,18,20,0.72));}
+.exp-panel.nextgen .exp-bg{background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&q=85&fit=crop');}
+.exp-panel.nextgen .exp-overlay{background:linear-gradient(to right,rgba(18,12,6,0.86),rgba(20,14,8,0.72));}
+.exp-content{position:relative;z-index:2;width:100%;max-width:960px;}
+.exp-num{position:absolute;top:90px;right:6vw;z-index:2;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:rgba(201,146,42,0.5);letter-spacing:0.1em;}
+.exp-label{color:var(--gold);margin-bottom:18px;}
+.exp-name{font-size:clamp(3.5rem,9vw,9rem);margin-bottom:14px;}
+.exp-role{color:rgba(245,243,238,0.7);font-size:1.05rem;margin-bottom:24px;font-weight:300;}
+.exp-hr{width:60px;height:2px;background:var(--gold);margin-bottom:34px;}
+.exp-stats{display:flex;gap:60px;flex-wrap:wrap;margin-bottom:30px;}
+.exp-stat .num{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,5vw,4rem);color:var(--white);line-height:1;}
+.exp-stat .num .gold{color:var(--gold);}
+.exp-stat .cap{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-top:8px;}
+.exp-keyline{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--gold);line-height:1.1;max-width:760px;margin-bottom:28px;}
+.exp-toggle{
+  background:none;border:1px solid rgba(245,243,238,0.25);color:var(--white);
+  padding:11px 22px;border-radius:3px;font-size:0.74rem;letter-spacing:0.16em;
+  text-transform:uppercase;cursor:pointer;transition:.3s;font-family:'DM Sans',sans-serif;font-weight:500;
+}
+.exp-toggle:hover{border-color:var(--gold);color:var(--gold);}
+.exp-bullets{
+  max-height:0;overflow:hidden;transition:max-height .6s ease,margin .6s ease,opacity .5s ease;opacity:0;
+  list-style:none;margin-top:0;max-width:720px;
+}
+.exp-bullets.open{max-height:600px;margin-top:28px;opacity:1;}
+.exp-bullets li{
+  position:relative;padding-left:24px;margin-bottom:14px;color:rgba(245,243,238,0.78);
+  line-height:1.55;font-weight:300;font-size:0.98rem;
+}
+.exp-bullets li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;background:var(--gold);border-radius:50%;}
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--ink-2);
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--ink); }
+/* ---------------- SERVICES ---------------- */
+.services{padding:140px 0;overflow:hidden;}
+.services-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=85&fit=crop') center/cover;}
+.services-bg::after{content:"";position:absolute;inset:0;background:rgba(8,8,8,0.85);}
+.services-inner{position:relative;z-index:2;}
+.services-title{font-size:clamp(3rem,7vw,7rem);margin:16px 0 60px;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.svc-card{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(201,146,42,0.25);
+  border-radius:4px;padding:36px 32px;backdrop-filter:blur(8px);
+  transition:background .3s,border-color .3s,transform .3s;
+}
+.svc-card:hover{background:rgba(201,146,42,0.08);border-color:rgba(201,146,42,0.6);transform:translateY(-4px);}
+.svc-num{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold);margin-bottom:14px;}
+.svc-card h3{font-size:1.18rem;font-weight:700;margin-bottom:14px;line-height:1.25;}
+.svc-card p{color:var(--text-muted);font-size:0.92rem;line-height:1.6;font-weight:300;}
 
-    .nav-hire {
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--white);
-      background: var(--slate);
-      padding: 9px 20px;
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
-    .nav-hire:hover { background: #2a4a6e; }
+/* ---------------- MARQUEE ---------------- */
+.marquee-sec{padding:90px 0;background:#060606;overflow:hidden;}
+.marquee{display:flex;white-space:nowrap;overflow:hidden;width:100%;}
+.marquee-track{display:flex;flex-shrink:0;align-items:center;will-change:transform;}
+.marquee-track span{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);letter-spacing:0.04em;padding:0 0;}
+.marquee-track .dot{color:rgba(201,146,42,0.45);padding:0 24px;}
+.marquee-left .marquee-track{animation:marqL 38s linear infinite;}
+.marquee-right .marquee-track{animation:marqR 52s linear infinite;}
+@keyframes marqL{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes marqR{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+.marquee-center{text-align:center;padding:54px 0;}
+.marquee-center .display{font-size:clamp(2rem,5vw,4rem);line-height:1.05;}
 
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-    }
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: var(--ink);
-      transition: all 0.2s;
-    }
+/* ---------------- IMPACT ---------------- */
+.impact{min-height:100vh;display:flex;align-items:center;overflow:hidden;text-align:center;}
+.impact-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=85&fit=crop') center/cover;}
+.impact-bg::after{content:"";position:absolute;inset:0;background:rgba(8,8,8,0.9);}
+.impact-inner{position:relative;z-index:2;width:100%;}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;}
+.impact-stat .num{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,8vw,8rem);line-height:0.9;color:var(--white);}
+.impact-stat .num .gold{color:var(--gold);}
+.impact-stat .cap{font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:16px;line-height:1.4;}
+.impact-note{margin-top:54px;font-style:italic;color:var(--text-muted);font-size:0.95rem;}
 
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 64px; left: 0; right: 0;
-      background: var(--cream);
-      border-bottom: 1px solid var(--rule);
-      padding: 24px 32px;
-      z-index: 99;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--ink);
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--rule);
-    }
+/* ---------------- PRODUCTS ---------------- */
+.products{background:var(--white);color:var(--black);padding:140px 0;}
+.products-title{font-size:clamp(3rem,7vw,7rem);color:var(--black);margin-bottom:18px;}
+.products-sub{color:rgba(8,8,8,0.6);font-size:1.05rem;max-width:540px;margin-bottom:56px;font-weight:300;}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.prod-card{
+  background:#fff;border:1px solid var(--border-light);border-radius:4px;padding:32px;
+  display:flex;flex-direction:column;min-height:240px;transition:border-color .3s,transform .3s;
+}
+.prod-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.prod-cat{align-self:flex-end;font-size:0.64rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:600;border:1px solid rgba(201,146,42,0.4);padding:4px 9px;border-radius:3px;}
+.prod-card h3{font-size:1.24rem;font-weight:700;margin:20px 0 12px;line-height:1.25;}
+.prod-card p{color:rgba(8,8,8,0.6);font-size:0.92rem;line-height:1.6;font-weight:300;flex:1;}
+.prod-foot{display:flex;align-items:center;justify-content:space-between;margin-top:22px;}
+.prod-price{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--black);}
+.prod-link{color:var(--gold);font-weight:600;font-size:0.88rem;letter-spacing:0.04em;}
+.prod-link:hover{text-decoration:underline;}
 
-    /* ─── Hero ─── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 100px 32px 80px;
-      background: var(--white);
-    }
+/* ---------------- CONTACT ---------------- */
+.contact{min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:120px 0;}
+.contact-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=85&fit=crop') center/cover;}
+.contact-bg::after{content:"";position:absolute;inset:0;background:rgba(8,8,8,0.88);}
+.contact-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;width:100%;}
+.contact-title{font-size:clamp(3.5rem,8vw,8rem);margin-bottom:30px;}
+.contact-text{color:rgba(245,243,238,0.75);font-size:1.05rem;line-height:1.7;max-width:460px;font-weight:300;}
+.contact-rule{width:70px;height:2px;background:var(--gold);margin:34px 0;}
+.contact-info dl{display:grid;grid-template-columns:120px 1fr;gap:18px 20px;align-items:baseline;}
+.contact-info dt{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;}
+.contact-info dd a{color:rgba(245,243,238,0.85);font-size:0.98rem;transition:color .25s;}
+.contact-info dd a:hover{color:var(--gold);}
+.contact-form{
+  background:rgba(255,255,255,0.05);border:1px solid rgba(201,146,42,0.2);
+  border-radius:6px;padding:40px;backdrop-filter:blur(8px);
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.contact-form label{display:block;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);margin:18px 0 8px;font-weight:500;}
+.contact-form input,.contact-form select,.contact-form textarea{
+  width:100%;background:rgba(8,8,8,0.5);border:1px solid rgba(245,243,238,0.15);
+  border-radius:3px;padding:13px 14px;color:var(--white);font-family:'DM Sans',sans-serif;
+  font-size:0.95rem;transition:border-color .25s;
+}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:none;border-color:var(--gold);}
+.contact-form textarea{resize:vertical;min-height:110px;}
+.contact-form select option{background:#0c0c0c;}
+.btn-send{
+  width:100%;margin-top:24px;background:var(--gold);color:var(--black);border:none;
+  padding:16px;border-radius:3px;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;
+  letter-spacing:0.1em;cursor:pointer;transition:.3s;
+}
+.btn-send:hover{background:#e0a838;}
+.form-success{display:none;text-align:center;padding:30px 10px;}
+.form-success.show{display:block;}
+.form-success .check{font-size:3rem;color:var(--gold);margin-bottom:14px;}
+.form-success p{color:rgba(245,243,238,0.8);font-size:1.05rem;}
 
-    .hero-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 80px;
-      align-items: center;
-    }
+/* ---------------- FOOTER ---------------- */
+footer{background:#050505;padding:34px 0;border-top:1px solid rgba(245,243,238,0.06);}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.footer-brand{font-weight:700;letter-spacing:0.06em;}
+.footer-center{color:var(--text-muted);font-size:0.86rem;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{color:var(--text-muted);font-size:0.86rem;transition:color .25s;}
+.footer-links a:hover{color:var(--gold);}
 
-    .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 32px;
-      height: 1px;
-      background: var(--gold);
-    }
+/* reveal helper */
+.reveal-line{will-change:transform,opacity;}
 
-    h1 {
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      font-weight: 800;
-      line-height: 1.0;
-      letter-spacing: -0.03em;
-      color: var(--ink);
-      margin-bottom: 24px;
-    }
-    h1 .name-line { display: block; }
-
-    .hero-title-line {
-      font-size: clamp(1rem, 1.8vw, 1.3rem);
-      font-weight: 400;
-      color: var(--ink-2);
-      line-height: 1.5;
-      margin-bottom: 32px;
-      max-width: 440px;
-    }
-    .hero-title-line strong { font-weight: 600; color: var(--ink); }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 44px;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--white);
-      background: var(--slate);
-      padding: 13px 28px;
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
-    .btn-primary:hover { background: #2a4a6e; }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--ink-2);
-      border-bottom: 1.5px solid var(--rule);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .btn-secondary:hover { color: var(--ink); border-color: var(--ink); }
-
-    .hero-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.82rem;
-      color: var(--ink-3);
-    }
-    .hero-meta a {
-      color: var(--link);
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-    .hero-meta a:hover { color: var(--slate); }
-    .dot-sep { color: var(--rule); }
-
-    /* Hero photo */
-    .hero-photo-wrap {
-      position: relative;
-    }
-    .hero-photo {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 8px;
-      display: block;
-    }
-    .photo-placeholder {
-      width: 100%;
-      aspect-ratio: 3/4;
-      border-radius: 8px;
-      background: #E8E4DD;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      color: var(--ink-3);
-      font-size: 0.82rem;
-    }
-    .photo-placeholder svg { opacity: 0.3; }
-    .hero-photo-label {
-      position: absolute;
-      bottom: 20px;
-      left: -20px;
-      background: var(--white);
-      border: 1px solid var(--rule);
-      border-radius: 4px;
-      padding: 12px 16px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--ink);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    }
-    .hero-photo-label span {
-      display: block;
-      font-weight: 400;
-      color: var(--ink-3);
-      margin-top: 2px;
-      font-size: 0.75rem;
-    }
-
-    /* ─── Section shared ─── */
-    section {
-      padding: 96px 32px;
-    }
-    section:nth-child(odd) { background: var(--cream); }
-    section:nth-child(even) { background: var(--white); }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 56px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--rule);
-      flex-wrap: wrap;
-    }
-
-    h2 {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      color: var(--ink);
-      line-height: 1.1;
-    }
-
-    .section-sub {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--ink-3);
-      letter-spacing: 0.01em;
-    }
-
-    /* ─── About ─── */
-    #about .container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    #about p {
-      color: var(--ink-2);
-      font-size: 1rem;
-      margin-bottom: 20px;
-    }
-    #about p:last-child { margin-bottom: 0; }
-
-    .about-sidebar { }
-
-    .sidebar-block {
-      border-top: 1px solid var(--rule);
-      padding: 24px 0;
-    }
-    .sidebar-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 12px;
-    }
-    .sidebar-value {
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: var(--ink);
-    }
-    .sidebar-value a {
-      color: var(--link);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-    .sidebar-value a:hover { color: var(--slate); }
-
-    .cert-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--slate);
-      background: var(--gold-lt);
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-top: 4px;
-    }
-
-    /* ─── Experience ─── */
-    #experience .exp-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .exp-item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 48px;
-      padding: 40px 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    .exp-item:first-child { padding-top: 0; }
-    .exp-item:last-child { border-bottom: none; }
-
-    .exp-left { }
-    .exp-company {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 4px;
-    }
-    .exp-dates {
-      font-size: 0.82rem;
-      color: var(--ink-3);
-      margin-top: 6px;
-    }
-    .exp-location {
-      font-size: 0.8rem;
-      color: var(--ink-3);
-      margin-top: 3px;
-    }
-
-    .exp-right { }
-    .exp-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 4px;
-      letter-spacing: -0.01em;
-    }
-    .exp-sector {
-      font-size: 0.82rem;
-      color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-    .exp-bullets {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-    .exp-bullets li {
-      font-size: 0.92rem;
-      color: var(--ink-2);
-      padding-left: 16px;
-      position: relative;
-      line-height: 1.65;
-    }
-    .exp-bullets li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 9px;
-      width: 5px;
-      height: 1px;
-      background: var(--gold);
-    }
-    .exp-highlight {
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    /* ─── Services ─── */
-    #services .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0;
-    }
-
-    .service-item {
-      padding: 36px 40px 36px 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    .service-item:nth-child(odd) {
-      border-right: 1px solid var(--rule);
-      padding-right: 40px;
-    }
-    .service-item:nth-child(even) {
-      padding-left: 40px;
-      padding-right: 0;
-    }
-    .service-item:last-child,
-    .service-item:nth-last-child(2):nth-child(odd) {
-      border-bottom: none;
-    }
-
-    .service-num {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-    .service-name {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
-    }
-    .service-desc {
-      font-size: 0.88rem;
-      color: var(--ink-3);
-      line-height: 1.7;
-    }
-
-    /* ─── Industries & Tools ─── */
-    #expertise .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-    }
-    .expertise-block-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--rule);
-    }
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .tag {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--ink-2);
-      background: var(--cream);
-      border: 1px solid var(--rule);
-      padding: 5px 12px;
-      border-radius: 100px;
-    }
-    .tag-highlight {
-      background: var(--gold-lt);
-      border-color: #D4B87A;
-      color: #7A5A20;
-      font-weight: 600;
-    }
-    .methodology-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .methodology-item {
-      font-size: 0.88rem;
-      color: var(--ink-2);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .methodology-item::before {
-      content: '';
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-
-    /* ─── Featured product cards ─── */
-    .product-card-featured {
-      background: var(--white);
-      border: 1px solid var(--rule);
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transition: box-shadow 0.2s, transform 0.2s;
-      position: relative;
-    }
-    .product-card-featured:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.10);
-    }
-    .product-card-featured--highlight {
-      border-color: var(--gold);
-    }
-    .pcf-eyebrow-badge {
-      position: absolute;
-      top: 0; right: 0;
-      background: var(--gold);
-      color: var(--white);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-bottom-left-radius: 8px;
-    }
-    .pcf-top { padding: 28px 28px 0; flex: 1; }
-    .pcf-eyebrow {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-    .pcf-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 12px;
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-    }
-    .pcf-desc {
-      font-size: 0.85rem;
-      color: var(--ink-3);
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
-    .pcf-bullets {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 24px;
-    }
-    .pcf-bullets li {
-      font-size: 0.82rem;
-      color: var(--ink-2);
-      padding-left: 14px;
-      position: relative;
-    }
-    .pcf-bullets li::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 7px;
-      width: 5px; height: 1px;
-      background: var(--gold);
-    }
-    .pcf-bottom {
-      padding: 16px 28px 24px;
-      border-top: 1px solid var(--rule);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-top: auto;
-    }
-    .pcf-price {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.02em;
-    }
-    .pcf-btn {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--white);
-      background: var(--slate);
-      padding: 10px 20px;
-      border-radius: 4px;
-      transition: background 0.2s;
-      cursor: pointer;
-    }
-    .pcf-btn:hover { background: #2a4a6e; }
-    .pcf-btn--gold { background: var(--gold); color: var(--white); }
-    .pcf-btn--gold:hover { background: #a8771f; }
-
-    /* ─── Products (legacy grid kept for reference) ─── */
-    #products .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .product-item {
-      background: var(--white);
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: background 0.2s;
-    }
-    .product-item:hover { background: var(--cream); }
-
-    .product-cat {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .product-name {
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-      line-height: 1.3;
-    }
-    .product-desc {
-      font-size: 0.83rem;
-      color: var(--ink-3);
-      line-height: 1.65;
-      flex: 1;
-    }
-    .product-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 12px;
-      border-top: 1px solid var(--rule);
-      margin-top: auto;
-    }
-    .product-price {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--ink);
-    }
-    .product-link {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--link);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-    .product-link:hover { color: var(--slate); }
-
-    /* ─── Contact ─── */
-    #contact .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .contact-text h2 { margin-bottom: 20px; }
-
-    .contact-text p {
-      font-size: 0.95rem;
-      color: var(--ink-2);
-      margin-bottom: 28px;
-      line-height: 1.75;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .contact-link-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.88rem;
-      color: var(--ink-2);
-    }
-    .contact-link-item a {
-      color: var(--link);
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-    .contact-link-item a:hover { color: var(--slate); }
-    .contact-link-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      width: 64px;
-      flex-shrink: 0;
-    }
-
-    /* Form */
-    .contact-form {
-      background: var(--white);
-      border: 1px solid var(--rule);
-      border-radius: 8px;
-      padding: 36px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .form-group {
-      margin-bottom: 18px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 7px;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 11px 14px;
-      border: 1px solid var(--rule);
-      border-radius: 4px;
-      font-size: 0.92rem;
-      font-family: inherit;
-      color: var(--ink);
-      background: var(--cream);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--slate);
-      background: var(--white);
-    }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 110px;
-    }
-    .form-group select { appearance: none; cursor: pointer; }
-
-    .btn-submit {
-      width: 100%;
-      padding: 13px;
-      background: var(--slate);
-      color: var(--white);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.2s;
-      font-family: inherit;
-    }
-    .btn-submit:hover { background: #2a4a6e; }
-
-    /* ─── Footer ─── */
-    footer {
-      background: var(--ink);
-      color: rgba(255,255,255,0.5);
-      padding: 40px 32px;
-    }
-    .footer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .footer-name {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-    .footer-name span { font-weight: 400; color: var(--gold); margin-left: 4px; }
-    .footer-copy { font-size: 0.78rem; }
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-    .footer-links a {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.4);
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: rgba(255,255,255,0.9); }
-
-    /* ─── Responsive ─── */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-      .hero-photo-wrap { max-width: 340px; }
-      #about .container { grid-template-columns: 1fr; gap: 48px; }
-      .exp-item { grid-template-columns: 1fr; gap: 16px; }
-      #expertise .two-col { grid-template-columns: 1fr; gap: 40px; }
-      #contact .contact-inner { grid-template-columns: 1fr; gap: 48px; }
-      .products-grid { grid-template-columns: 1fr 1fr !important; }
-    }
-    @media (max-width: 768px) {
-      .nav-links, .nav-hire { display: none; }
-      .hamburger { display: flex; }
-      .hero-photo-wrap { display: none; }
-      .services-grid { grid-template-columns: 1fr !important; }
-      .service-item:nth-child(odd) { border-right: none; padding-right: 0; }
-      .service-item:nth-child(even) { padding-left: 0; }
-      .service-item:nth-last-child(2):nth-child(odd) { border-bottom: 1px solid var(--rule); }
-      section { padding: 72px 32px; }
-    }
-    @media (max-width: 600px) {
-      .container, section, header { padding-left: 20px; padding-right: 20px; }
-      .form-row { grid-template-columns: 1fr; }
-      .products-grid { grid-template-columns: 1fr !important; }
-      h1 { font-size: 2.4rem; }
-    }
-  </style>
+/* ---------------- RESPONSIVE ---------------- */
+@media(max-width:980px){
+  .nav-links{display:none;}
+  .btn-hire{display:none;}
+  .nav-toggle{display:flex;}
+  .about-grid{grid-template-columns:1fr;gap:50px;}
+  .about-photo{order:-1;}
+  .about-photo img,.headshot-fallback{height:420px;}
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .products-grid{grid-template-columns:repeat(2,1fr);}
+  .contact-inner{grid-template-columns:1fr;gap:50px;}
+}
+@media(max-width:680px){
+  .hero-name{font-size:clamp(4rem,16vw,7rem);}
+  .hero-bg{background-position:center;}
+  .exp-stats{gap:34px;}
+  .impact-grid{grid-template-columns:repeat(2,1fr);gap:46px 24px;}
+  .services-grid{grid-template-columns:1fr;}
+  .products-grid{grid-template-columns:1fr;}
+  .about-meta{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .marquee-track span{font-size:1.5rem;}
+  .footer-inner{flex-direction:column;text-align:center;}
+  .exp-num{top:70px;}
+}
+</style>
 </head>
 <body>
 
-  <!-- ─── Header ─── -->
-  <header id="site-header">
-    <nav>
-      <div class="nav-name">Brandon Stevens<span>PMP</span></div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a href="#contact" class="nav-hire">Hire Me</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-  </header>
-
-  <div class="mobile-nav" id="mobile-nav">
-    <a href="#about" onclick="closeMobile()">About</a>
-    <a href="#experience" onclick="closeMobile()">Experience</a>
-    <a href="#services" onclick="closeMobile()">Services</a>
-    <a href="#products" onclick="closeMobile()">Products</a>
-    <a href="#contact" onclick="closeMobile()">Contact</a>
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">BRANDON STEVENS <span class="badge">PMP</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="btn-hire" onclick="document.querySelector('#contact').scrollIntoView()">Hire Me</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
+</nav>
 
-  <!-- ─── Hero ─── -->
-  <section id="hero" style="padding:100px 32px 80px;">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-eyebrow">Philadelphia, PA &nbsp;·&nbsp; Open to FTE &amp; Contract</div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#services">Services</a>
+  <a href="#products">Products</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="gold">Hire Me</a>
+</div>
 
-        <h1>
-          <span class="name-line">Brandon</span>
-          <span class="name-line">Stevens</span>
-        </h1>
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <div class="hero-tagline">
+      <span class="gold-line"></span>
+      <span class="label">Philadelphia, PA · PMP Certified</span>
+    </div>
+    <h1 class="hero-name display" id="heroName">
+      <span class="line" data-text="BRANDON"></span>
+      <span class="line" data-text="STEVENS"></span>
+    </h1>
+    <p class="hero-sub" id="heroSub">
+      <strong>Senior Project Manager &amp; Technical Program Manager</strong><br>
+      10 years. Three industries. Fortune 100 to startup.<br>
+      The work changes. The standard doesn't.
+    </p>
+    <div class="hero-btns" id="heroBtns">
+      <button class="btn-primary" onclick="document.querySelector('#contact').scrollIntoView()">Hire Me</button>
+      <button class="btn-ghost" onclick="document.querySelector('#experience').scrollIntoView()">View My Work ↓</button>
+    </div>
+    <div class="hero-linkedin" id="heroLi">
+      <a href="https://www.linkedin.com/in/brandon-stevens-pmp" target="_blank" rel="noopener">linkedin.com/in/brandon-stevens-pmp</a>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <div class="scroll-line"></div>
+    <span class="txt">SCROLL</span>
+  </div>
+</section>
 
-        <p class="hero-title-line">
-          <strong>Senior Project Manager &amp; Technical Program Manager.</strong>
-          10+ years delivering enterprise programs in energy, fintech, and healthcare.
-          <span style="color:var(--gold);font-weight:600;">PMP Certified.</span>
-        </p>
-
-        <div class="hero-actions">
-          <a href="#contact" class="btn-primary">Hire Me</a>
-          <a href="#experience" class="btn-secondary">
-            View Experience
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <div class="hero-meta">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          <a href="https://www.linkedin.com/in/brandon-stevens-pmp" target="_blank" rel="noopener">linkedin.com/in/brandon-stevens-pmp</a>
-          <span class="dot-sep">·</span>
-          <span>BrandonStevensPM@gmail.com</span>
-        </div>
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-body">
+        <span class="label gold reveal-line">About</span>
+        <h2 class="about-title display reveal-line">DELIVERING<br>WHAT WAS<br>PROMISED.</h2>
+        <p class="reveal-line">I'm Brandon Stevens — a PMP-certified Senior Project Manager and Technical Program Manager based in Philadelphia.</p>
+        <p class="reveal-line">Over the past decade I've owned end-to-end delivery of enterprise programs at a Fortune 100 energy company, a payments middleware firm, and a health IT vendor. My work spans $25M–$75M portfolios, 15–50 concurrent projects, and teams spread across engineering, finance, legal, and operations.</p>
+        <p class="reveal-line">I don't just report status. I surface problems early, structure the tradeoffs, and equip leaders to make confident decisions.</p>
+        <div class="about-rule reveal-line"><span class="fill"></span></div>
+        <dl class="about-meta">
+          <div class="reveal-line"><dt>Certification</dt><dd>PMP — Project Management Professional (PMI)</dd></div>
+          <div class="reveal-line"><dt>Education</dt><dd>B.A., Corporate Communications &amp; Business · Penn State</dd></div>
+          <div class="reveal-line"><dt>Availability</dt><dd>FTE &amp; Contract · W-2 / 1099 / SOW</dd></div>
+          <div class="reveal-line"><dt>Location</dt><dd>Philadelphia, PA · Remote available</dd></div>
+        </dl>
       </div>
-
-      <div class="hero-photo-wrap">
-        <!-- Save your headshot as headshot.jpg in this folder to display it here -->
-        <img
-          src="headshot.jpg"
-          alt="Brandon Stevens, PMP"
-          class="hero-photo"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-        />
-        <div class="photo-placeholder" style="display:none;">
-          <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          <span>Save headshot.jpg here</span>
-        </div>
-        <div class="hero-photo-label">
-          Project Manager
-          <span>Philadelphia, PA</span>
+      <div class="about-photo">
+        <div class="frame" id="aboutPhoto">
+          <img src="./headshot.jpg" alt="Brandon Stevens" onerror="this.parentNode.innerHTML='<div class=\'headshot-fallback\'><div class=\'initials\'>BS</div></div>';" />
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ─── About ─── -->
-  <section id="about" style="background:var(--cream);">
-    <div class="container">
-      <div class="section-header">
-        <h2>About</h2>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
-        <div>
-          <p>I'm a PMP-certified Senior Project Manager and Technical Program Manager based in Philadelphia with over a decade of experience owning end-to-end delivery of enterprise-scale programs. My work spans Fortune 100 energy companies, payments infrastructure, and regulated healthcare environments — and the through-line is the same across all of them: delivering complex, cross-functional work with transparency, precision, and no surprises at the finish line.</p>
-          <p>I'm as comfortable presenting risk-weighted options to an executive steering committee as I am facilitating a sprint retrospective with a development team. I don't just report status — I surface problems early, structure the tradeoffs, and equip leaders to make confident decisions. At PECO Energy, I designed the governance framework that routes 50+ projects annually through stage-gate oversight. At Datacap Systems, I maintained a 95% on-time delivery rate across 15+ concurrent fintech integration projects.</p>
-          <p>I'm currently open to full-time employment and contract engagements. If you're building something complex and need someone who can own delivery end-to-end, I'd like to talk.</p>
-        </div>
-        <div class="about-sidebar">
-          <div class="sidebar-block" style="border-top:none;padding-top:0;">
-            <div class="sidebar-label">Certification</div>
-            <div class="cert-item">
-              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              Project Management Professional (PMP)
-            </div>
-          </div>
-          <div class="sidebar-block">
-            <div class="sidebar-label">Education</div>
-            <div class="sidebar-value">B.A., Corporate Communications &amp; Business<br/>Pennsylvania State University</div>
-          </div>
-          <div class="sidebar-block">
-            <div class="sidebar-label">Location</div>
-            <div class="sidebar-value">Philadelphia, PA</div>
-          </div>
-          <div class="sidebar-block">
-            <div class="sidebar-label">Availability</div>
-            <div class="sidebar-value">Full-Time Employment &amp; Contract<br/>(W-2 / 1099 / SOW)</div>
-          </div>
-          <div class="sidebar-block">
-            <div class="sidebar-label">LinkedIn</div>
-            <div class="sidebar-value"><a href="https://www.linkedin.com/in/brandon-stevens-pmp" target="_blank" rel="noopener">linkedin.com/in/brandon-stevens-pmp</a></div>
-          </div>
-          <div class="sidebar-block">
-            <div class="sidebar-label">Contact</div>
-            <div class="sidebar-value"><a href="mailto:BrandonStevensPM@gmail.com">BrandonStevensPM@gmail.com</a></div>
-          </div>
-        </div>
+<!-- ============ EXPERIENCE ============ -->
+<div id="experience"></div>
+
+<!-- Panel A: PECO -->
+<section class="exp-panel peco">
+  <div class="exp-bg"></div>
+  <div class="exp-overlay"></div>
+  <span class="exp-num">01</span>
+  <div class="exp-content container">
+    <span class="label exp-label reveal-line">2022 – Present · Fortune 100</span>
+    <h2 class="exp-name display reveal-line">PECO ENERGY</h2>
+    <p class="exp-role reveal-line">Enterprise PMO Governance &amp; Compliance · Philadelphia, PA</p>
+    <div class="exp-hr"></div>
+    <div class="exp-stats">
+      <div class="exp-stat"><div class="num"><span class="gold">$</span><span class="count" data-target="75">0</span><span class="gold">M</span></div><div class="cap">Portfolio</div></div>
+      <div class="exp-stat"><div class="num"><span class="count" data-target="50">0</span><span class="gold">+</span></div><div class="cap">Projects / Year</div></div>
+      <div class="exp-stat"><div class="num"><span class="gold">$</span><span class="count" data-target="1.3" data-decimals="1">0</span><span class="gold">M</span></div><div class="cap">Cost Avoidance</div></div>
+    </div>
+    <p class="exp-keyline reveal-line">Designed the governance framework that routes every major project through PECO's executive gate.</p>
+    <button class="exp-toggle" data-toggle>Read More +</button>
+    <ul class="exp-bullets">
+      <li>Reduced late-stage rework by 27% through earlier risk identification and tighter stage-gate routing.</li>
+      <li>Improved governance tier alignment by 72% across the portfolio.</li>
+      <li>Increased on-time gate approvals by 80% by delivering decision-ready documentation with tradeoff analysis.</li>
+      <li>Chaired the CCB that drove $1.3M+ in cost avoidance while maintaining dependency maps for executive review.</li>
+      <li>Drove AI productivity tool adoption (Microsoft Copilot, ChatGPT) across the enterprise PMO.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Panel B: Datacap -->
+<section class="exp-panel datacap">
+  <div class="exp-bg"></div>
+  <div class="exp-overlay"></div>
+  <span class="exp-num">02</span>
+  <div class="exp-content container">
+    <span class="label exp-label reveal-line">2017 – 2022 · Payments &amp; FinTech</span>
+    <h2 class="exp-name display reveal-line">DATACAP SYSTEMS</h2>
+    <p class="exp-role reveal-line">Implementation Project Manager · Chalfont, PA</p>
+    <div class="exp-hr"></div>
+    <div class="exp-stats">
+      <div class="exp-stat"><div class="num"><span class="count" data-target="15">0</span><span class="gold">+</span></div><div class="cap">Concurrent Projects</div></div>
+      <div class="exp-stat"><div class="num"><span class="count" data-target="95">0</span><span class="gold">%</span></div><div class="cap">On-Time Rate</div></div>
+      <div class="exp-stat"><div class="num"><span class="gold">$</span><span class="count" data-target="200">0</span><span class="gold">K+</span></div><div class="cap">New Revenue</div></div>
+    </div>
+    <p class="exp-keyline reveal-line">15 concurrent integration projects. 95% delivered on time. Every year for five years.</p>
+    <button class="exp-toggle" data-toggle>Read More +</button>
+    <ul class="exp-bullets">
+      <li>Led end-to-end delivery of payments and FinTech integration projects for enterprise partners and acquirers.</li>
+      <li>Built a partner prioritization model using historical performance and ROI analysis that contributed $200K+ in recurring revenue.</li>
+      <li>Managed a $1M+ gateway asset portfolio with standardized intake, change control, and weekly reporting.</li>
+      <li>Shortened onboarding cycle times by partnering with product and engineering on backlog grooming and release planning.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Panel C: NextGen -->
+<section class="exp-panel nextgen">
+  <div class="exp-bg"></div>
+  <div class="exp-overlay"></div>
+  <span class="exp-num">03</span>
+  <div class="exp-content container">
+    <span class="label exp-label reveal-line">2014 – 2016 · Healthcare &amp; EHR</span>
+    <h2 class="exp-name display reveal-line">NEXTGEN HEALTHCARE</h2>
+    <p class="exp-role reveal-line">Project Coordinator, EHR/EMR · Horsham, PA</p>
+    <div class="exp-hr"></div>
+    <div class="exp-stats">
+      <div class="exp-stat"><div class="num"><span class="count" data-target="17">0</span></div><div class="cap">Projects</div></div>
+      <div class="exp-stat"><div class="num"><span class="count" data-target="25">0</span></div><div class="cap">Clinics</div></div>
+      <div class="exp-stat"><div class="num gold" style="font-size:clamp(1.8rem,3.4vw,2.6rem);">HIPAA</div><div class="cap">Compliant</div></div>
+    </div>
+    <p class="exp-keyline reveal-line">EHR go-lives across 25 healthcare networks, zero compliance violations.</p>
+    <button class="exp-toggle" data-toggle>Read More +</button>
+    <ul class="exp-bullets">
+      <li>Coordinated 17 multi-site EHR/EMR implementation projects across 25 clinics and healthcare networks.</li>
+      <li>Ensured adherence to HIPAA and HL7 standards through every deployment.</li>
+      <li>Supported end-user training and post-go-live adoption in regulated healthcare environments.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="services-bg"></div>
+  <div class="services-inner container">
+    <span class="label gold reveal-line">Services</span>
+    <h2 class="services-title display reveal-line">WHAT I<br>DELIVER</h2>
+    <div class="services-grid">
+      <div class="svc-card"><div class="svc-num">01</div><h3>Enterprise Project &amp; Program Management</h3><p>End-to-end ownership of cross-functional programs. $25M–$75M portfolios. 15–50+ concurrent projects. Multi-year, multi-stakeholder delivery.</p></div>
+      <div class="svc-card"><div class="svc-num">02</div><h3>Technical Program Management (TPM)</h3><p>Embedded with engineering and product. Backlog grooming, release planning, dependency mapping, executive reporting. Translating complexity into confident decisions.</p></div>
+      <div class="svc-card"><div class="svc-num">03</div><h3>PMO Governance &amp; Stage-Gate</h3><p>Design and build of PMO infrastructure, project complexity models, Change Control Boards, and stage-gate routing. Built for Fortune 100. Scalable to your organization.</p></div>
+      <div class="svc-card"><div class="svc-num">04</div><h3>AI &amp; Automation Program Delivery</h3><p>GenAI and workflow automation programs from problem definition to enterprise rollout. Coordinating technology, data, risk, and legal across the delivery lifecycle.</p></div>
+      <div class="svc-card"><div class="svc-num">05</div><h3>Agile Delivery &amp; Process Improvement</h3><p>Scrum, SAFe, Kanban, hybrid, and stage-gate. Sprint facilitation, velocity improvement, and delivery process redesign in both enterprise and startup environments.</p></div>
+      <div class="svc-card"><div class="svc-num">06</div><h3>Fractional PM &amp; Contract Consulting</h3><p>Senior-level PM oversight without a full-time hire. Retainer, T&amp;M, or fixed-bid SOW. Remote-first. Rapid onboarding.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<section class="marquee-sec">
+  <div class="marquee marquee-left">
+    <div class="marquee-track" id="trackInd"></div>
+  </div>
+  <div class="marquee-center">
+    <div class="display">10 YEARS OF DELIVERY ACROSS<br><span class="gold">EVERY INDUSTRY THAT MATTERS</span></div>
+  </div>
+  <div class="marquee marquee-right">
+    <div class="marquee-track" id="trackTool"></div>
+  </div>
+</section>
+
+<!-- ============ IMPACT ============ -->
+<section class="impact">
+  <div class="impact-bg"></div>
+  <div class="impact-inner container">
+    <div class="impact-grid">
+      <div class="impact-stat"><div class="num"><span class="count" data-target="10">0</span><span class="gold">+</span></div><div class="cap">Years<br>Experience</div></div>
+      <div class="impact-stat"><div class="num"><span class="gold">$</span><span class="count" data-target="75">0</span><span class="gold">M</span></div><div class="cap">Max<br>Portfolio</div></div>
+      <div class="impact-stat"><div class="num"><span class="count" data-target="95">0</span><span class="gold">%</span></div><div class="cap">On-Time<br>Delivery</div></div>
+      <div class="impact-stat"><div class="num"><span class="gold">$</span><span class="count" data-target="1.3" data-decimals="1">0</span><span class="gold">M</span></div><div class="cap">Cost<br>Avoidance</div></div>
+    </div>
+    <p class="impact-note">Numbers from real engagements. Not estimates.</p>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="products" id="products">
+  <div class="container">
+    <h2 class="products-title display reveal-line">RESOURCES<br>BUILT FROM<br>THE FIELD</h2>
+    <p class="products-sub reveal-line">Tools and frameworks from ten years of real project delivery. Ready to use on day one.</p>
+    <div class="products-grid">
+      <div class="prod-card"><span class="prod-cat">Templates</span><h3>Complete PM Template Bundle</h3><p>30+ templates: charters, RACI, risk registers, stage-gate checklists, status reports.</p><div class="prod-foot"><span class="prod-price">$49</span><a class="prod-link" href="#contact">Get Access →</a></div></div>
+      <div class="prod-card"><span class="prod-cat">Framework</span><h3>PMO Setup Playbook</h3><p>Build a PMO from scratch. The governance model used at a Fortune 100 utility, adapted for any organization.</p><div class="prod-foot"><span class="prod-price">$79</span><a class="prod-link" href="#contact">Get Access →</a></div></div>
+      <div class="prod-card"><span class="prod-cat">Agile</span><h3>Agile Sprint Starter Kit</h3><p>Backlog templates, definition of done, sprint review agendas, velocity tracking. Everything for your first proper sprints.</p><div class="prod-foot"><span class="prod-price">$29</span><a class="prod-link" href="#contact">Get Access →</a></div></div>
+      <div class="prod-card"><span class="prod-cat">Career</span><h3>PM Career Roadmap Guide</h3><p>Certifications, portfolio building, salary negotiation, and how to break into freelance PM work.</p><div class="prod-foot"><span class="prod-price">$39</span><a class="prod-link" href="#contact">Get Access →</a></div></div>
+      <div class="prod-card"><span class="prod-cat">Course</span><h3>Freelance PM Masterclass</h3><p>Land your first contract, price your services, manage clients, build independence.</p><div class="prod-foot"><span class="prod-price">$149</span><a class="prod-link" href="#contact">Get Access →</a></div></div>
+      <div class="prod-card"><span class="prod-cat">Free</span><h3>Project Kickoff Checklist</h3><p>The 30-day checklist I use on every new engagement. Download instantly.</p><div class="prod-foot"><span class="prod-price">Free</span><a class="prod-link" href="#contact">Get Access →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="contact-bg"></div>
+  <div class="contact-inner container">
+    <div>
+      <h2 class="contact-title display reveal-line">LET'S<br>WORK<br>TOGETHER.</h2>
+      <p class="contact-text reveal-line">Whether you're staffing a critical program, need a fractional PM for a complex initiative, or want to discuss a consulting engagement — I respond to every message within 24 hours.</p>
+      <div class="contact-rule"></div>
+      <div class="contact-info">
+        <dl>
+          <dt>Email</dt><dd><a href="mailto:BrandonStevensPM@gmail.com">BrandonStevensPM@gmail.com</a></dd>
+          <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/brandon-stevens-pmp" target="_blank" rel="noopener">linkedin.com/in/brandon-stevens-pmp</a></dd>
+          <dt>Location</dt><dd><span style="color:rgba(245,243,238,0.85);">Philadelphia, PA · Remote available</span></dd>
+        </dl>
       </div>
     </div>
-  </section>
-
-  <!-- ─── Experience ─── -->
-  <section id="experience" style="background:var(--white);">
-    <div class="container">
-      <div class="section-header">
-        <h2>Experience</h2>
-        <span class="section-sub">10+ years · 3 industries</span>
-      </div>
-
-      <div class="exp-list">
-
-        <!-- PECO -->
-        <div class="exp-item">
-          <div class="exp-left">
-            <div class="exp-company">PECO Energy</div>
-            <div style="font-size:0.78rem;color:var(--ink-3);margin-top:3px;">An Exelon Company</div>
-            <div class="exp-dates">Dec 2022 – Present</div>
-            <div class="exp-location">Philadelphia, PA</div>
-          </div>
-          <div class="exp-right">
-            <div class="exp-title">Project Manager — Enterprise PMO Governance &amp; Compliance</div>
-            <div class="exp-sector">Energy &amp; Utilities · Fortune 100</div>
-            <ul class="exp-bullets">
-              <li>Own end-to-end delivery of governance and compliance initiatives supporting a <span class="exp-highlight">$25M–$75M portfolio</span> of capital and O&M projects across engineering, construction, IT, regulatory, and finance — reducing late-stage rework by <span class="exp-highlight">27%</span> through earlier risk identification and tighter stage-gate routing.</li>
-              <li>Designed and implemented an enterprise-wide project complexity model applied to <span class="exp-highlight">50+ projects annually</span>, standardizing risk scoring and PMO routing — improving alignment between project risk and governance tier by <span class="exp-highlight">72%</span>.</li>
-              <li>Partner with 7+ cross-functional groups to advance ~20 projects per month through governance gates with decision-ready documentation — increasing on-time gate approvals by <span class="exp-highlight">80%</span>.</li>
-              <li>Designed and chair the Change Control Board (CCB) that integrated regional projects into One Exelon governance, driving more than <span class="exp-highlight">$1.3M in cost avoidance</span> while equipping executives with dependency maps and risk-weighted recommendations.</li>
-              <li>Drive change enablement for new PMO tooling and AI-enabled productivity tools (Microsoft Copilot, ChatGPT) to streamline analysis and executive reporting across the portfolio.</li>
-            </ul>
-          </div>
+    <div class="contact-form">
+      <form id="contactForm" action="https://formspree.io/f/xykvnpyn" method="POST">
+        <div class="form-row">
+          <div><label>First Name</label><input type="text" name="first" required /></div>
+          <div><label>Last Name</label><input type="text" name="last" required /></div>
         </div>
-
-        <!-- Datacap -->
-        <div class="exp-item">
-          <div class="exp-left">
-            <div class="exp-company">Datacap Systems</div>
-            <div class="exp-dates">May 2017 – Dec 2022</div>
-            <div class="exp-location">Chalfont, PA</div>
-          </div>
-          <div class="exp-right">
-            <div class="exp-title">Implementation Project Manager — Payments &amp; FinTech Integrations</div>
-            <div class="exp-sector">Payments &amp; FinTech · U.S. Payments Middleware</div>
-            <ul class="exp-bullets">
-              <li>Led end-to-end delivery of <span class="exp-highlight">15+ concurrent payments integration projects annually</span>, driving cross-functional teams through discovery, design, certification, launch, and post-launch optimization with a <span class="exp-highlight">95% on-time delivery rate</span>.</li>
-              <li>Built a data-driven partner prioritization model using historical project performance and ROI analysis — informing portfolio intake decisions and contributing <span class="exp-highlight">$200K+ in new recurring revenue</span>.</li>
-              <li>Oversaw a <span class="exp-highlight">$1M+ gateway asset portfolio</span>, establishing project intake, resource allocation, and change control frameworks that standardized delivery across the partner organization.</li>
-              <li>Partnered with product and engineering on backlog grooming, release planning, and process automation — shortening partner onboarding cycle times and freeing engineering capacity for new-product development.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- NextGen -->
-        <div class="exp-item">
-          <div class="exp-left">
-            <div class="exp-company">NextGen Healthcare</div>
-            <div class="exp-dates">Jul 2014 – May 2016</div>
-            <div class="exp-location">Horsham, PA</div>
-          </div>
-          <div class="exp-right">
-            <div class="exp-title">Project Coordinator — EHR/EMR Implementations</div>
-            <div class="exp-sector">Healthcare &amp; Health IT</div>
-            <ul class="exp-bullets">
-              <li>Coordinated <span class="exp-highlight">17 multi-site EHR/EMR implementation projects</span> across 25 clinics and healthcare networks, ensuring readiness, system alignment, data-migration coordination, and successful go-live deployment.</li>
-              <li>Partnered with developers, implementation PMs, and client stakeholders to ensure adherence to healthcare standards (HIPAA, HL7) — supporting end-user training plans and post-go-live adoption.</li>
-            </ul>
-          </div>
-        </div>
-
+        <label>Email</label>
+        <input type="email" name="email" required />
+        <label>Engagement Type</label>
+        <select name="engagement">
+          <option>Full-Time Employment</option>
+          <option>Contract</option>
+          <option>Fractional PM</option>
+          <option>Digital Product</option>
+          <option>Other</option>
+        </select>
+        <label>Message</label>
+        <textarea name="message" required></textarea>
+        <button type="submit" class="btn-send">Send Message</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="check">✓</div>
+        <p>Message sent. I'll be in touch shortly.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ─── Services ─── -->
-  <section id="services" style="background:var(--cream);">
-    <div class="container">
-      <div class="section-header">
-        <h2>Services</h2>
-        <span class="section-sub">Available for contract &amp; FTE</span>
-      </div>
-      <div class="services-grid" style="display:grid;grid-template-columns:repeat(2,1fr);">
-        <div class="service-item">
-          <div class="service-num">01</div>
-          <div class="service-name">Enterprise Project &amp; Program Management</div>
-          <p class="service-desc">End-to-end ownership of complex, cross-functional programs — from scope definition and resource planning through stakeholder governance and closeout. Comfortable managing $25M–$75M portfolios, 15–50+ concurrent projects, and multi-year initiatives across engineering, IT, finance, and operations.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-num">02</div>
-          <div class="service-name">Technical Program Management (TPM)</div>
-          <p class="service-desc">Senior TPM embedded with engineering and product teams to drive technical delivery. Backlog grooming, release planning, dependency mapping, and executive reporting — translating technical complexity into clear tradeoffs and recommendations for leadership.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-num">03</div>
-          <div class="service-name">PMO Governance &amp; Stage-Gate</div>
-          <p class="service-desc">Design and implementation of PMO structures, project complexity models, Change Control Boards, and stage-gate frameworks. I've built governance infrastructure that routes 50+ projects annually at a Fortune 100 utility — and I can bring that structure to your organization.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-num">04</div>
-          <div class="service-name">AI &amp; Automation Program Delivery</div>
-          <p class="service-desc">Program management for GenAI, workflow automation, and decision-support initiatives — coordinating technology, product, data, risk, and legal stakeholders from problem definition to enterprise rollout and adoption.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-num">05</div>
-          <div class="service-name">Agile Delivery &amp; Process Improvement</div>
-          <p class="service-desc">Scrum, SAFe, Kanban, hybrid, and stage-gate environments. Sprint facilitation, velocity optimization, backlog management, and delivery process redesign. Experienced standing up Agile practices in both startup and enterprise contexts.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-num">06</div>
-          <div class="service-name">Fractional PM &amp; Contract Consulting</div>
-          <p class="service-desc">Part-time or short-engagement PM embedded in your team when you need senior-level delivery oversight without a full-time hire. Available on retainer, time &amp; materials, or fixed-bid SOW. Rapid onboarding, remote-first capable.</p>
-        </div>
-      </div>
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">BRANDON STEVENS PMP</div>
+    <div class="footer-center">© 2026 · Philadelphia, PA</div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/brandon-stevens-pmp" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:BrandonStevensPM@gmail.com">Email</a>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- ─── Expertise ─── -->
-  <section id="expertise" style="background:var(--white);">
-    <div class="container">
-      <div class="section-header">
-        <h2>Tools &amp; Expertise</h2>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;">
-        <div>
-          <div class="expertise-block-label">Industries</div>
-          <div class="tag-list">
-            <span class="tag tag-highlight">Energy &amp; Utilities</span>
-            <span class="tag tag-highlight">Payments &amp; FinTech</span>
-            <span class="tag tag-highlight">Healthcare / EHR</span>
-            <span class="tag">Financial Services</span>
-            <span class="tag">Enterprise SaaS</span>
-            <span class="tag">Insurance</span>
-            <span class="tag">Pharma / Life Sciences</span>
-          </div>
-        </div>
-        <div>
-          <div class="expertise-block-label">Delivery Methods</div>
-          <div class="methodology-list">
-            <div class="methodology-item">Agile / Scrum / SAFe / Kanban</div>
-            <div class="methodology-item">Waterfall &amp; Stage-Gate</div>
-            <div class="methodology-item">Hybrid &amp; Lean</div>
-            <div class="methodology-item">PMBOK / SDLC</div>
-            <div class="methodology-item">DevOps &amp; CI/CD awareness</div>
-            <div class="methodology-item">Change Control Board (CCB)</div>
-          </div>
-        </div>
-        <div>
-          <div class="expertise-block-label">Tools</div>
-          <div class="tag-list">
-            <span class="tag">Jira</span>
-            <span class="tag">Confluence</span>
-            <span class="tag">MS Project</span>
-            <span class="tag">Smartsheet</span>
-            <span class="tag">Primavera P6</span>
-            <span class="tag">ServiceNow</span>
-            <span class="tag">SharePoint</span>
-            <span class="tag">Power BI</span>
-            <span class="tag">Tableau</span>
-            <span class="tag">Salesforce</span>
-            <span class="tag">Microsoft Copilot</span>
-            <span class="tag">SAP</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Products ─── -->
-  <!-- Gumroad overlay script — enables in-page checkout without leaving the site -->
-  <script src="https://gumroad.com/js/gumroad.js"></script>
-
-  <section id="products" style="background:var(--cream);">
-    <div class="container">
-      <div class="section-header">
-        <h2>Digital Resources</h2>
-        <span class="section-sub">Instant download · No fluff</span>
-      </div>
-      <p style="font-size:0.95rem;color:var(--ink-2);margin-bottom:48px;max-width:560px;line-height:1.75;">
-        Three products built from a decade of real PM work. These are tools — your results depend on you using them.
-        That's the point.
-      </p>
-
-      <!-- ── Featured 3 TikTok products ── -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:24px;">
-
-        <!-- Product 1 -->
-        <div class="product-card-featured">
-          <div class="pcf-top">
-            <div class="pcf-eyebrow">Interview Prep</div>
-            <h3 class="pcf-title">The PM Interview Vault</h3>
-            <p class="pcf-desc">50 real PM interview questions — behavioral, situational, technical, and leadership — with answer frameworks, the STAR method broken down, and salary negotiation scripts. I've been on both sides of the table. This is what I know works.</p>
-            <ul class="pcf-bullets">
-              <li>50 questions across 4 categories with frameworks</li>
-              <li>STAR method architecture + timing guide</li>
-              <li>5 salary negotiation scripts, word for word</li>
-              <li>Night-before prep checklist</li>
-            </ul>
-          </div>
-          <div class="pcf-bottom">
-            <div class="pcf-price">$27</div>
-            <!-- Replace YOUR_PRODUCT_ID_1 with your Gumroad product ID after uploading -->
-            <a class="pcf-btn" href="https://brandonstevenspmp.gumroad.com/l/pm-interview-vault?wanted=true">Buy Now →</a>
-          </div>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="product-card-featured">
-          <div class="pcf-top">
-            <div class="pcf-eyebrow">New Role Playbook</div>
-            <h3 class="pcf-title">The 90-Day New PM Playbook</h3>
-            <p class="pcf-desc">A week-by-week system for your first 90 days in any PM role. Three phases: Listen, Align, Own. Includes a stakeholder map template, 30/60/90 goals framework, and a manager alignment guide you can use on day one.</p>
-            <ul class="pcf-bullets">
-              <li>Week-by-week action plan, days 1–90</li>
-              <li>Stakeholder map template (fillable)</li>
-              <li>Listening tour question framework</li>
-              <li>30/60/90 goals worksheet</li>
-            </ul>
-          </div>
-          <div class="pcf-bottom">
-            <div class="pcf-price">$37</div>
-            <!-- Replace YOUR_PRODUCT_ID_2 with your Gumroad product ID after uploading -->
-            <a class="pcf-btn" href="https://brandonstevenspmp.gumroad.com/l/90-day-pm-playbook?wanted=true">Buy Now →</a>
-          </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-card-featured product-card-featured--highlight">
-          <div class="pcf-eyebrow-badge">Most Actionable</div>
-          <div class="pcf-top">
-            <div class="pcf-eyebrow">Freelance PM</div>
-            <h3 class="pcf-title">Freelance PM Launch System</h3>
-            <p class="pcf-desc">The end-to-end system for landing your first freelance PM contract in 60 days. Offer framework, rate calculator, LinkedIn optimization guide, outreach scripts, discovery call structure, proposal template, and contract essentials.</p>
-            <ul class="pcf-bullets">
-              <li>Rate calculator with market benchmarks</li>
-              <li>4 outreach scripts that get responses</li>
-              <li>Discovery call framework (30-min structure)</li>
-              <li>Proposal + contract essentials</li>
-            </ul>
-          </div>
-          <div class="pcf-bottom">
-            <div class="pcf-price">$47</div>
-            <!-- Replace YOUR_PRODUCT_ID_3 with your Gumroad product ID after uploading -->
-            <a class="pcf-btn pcf-btn--gold" href="https://brandonstevenspmp.gumroad.com/l/freelance-pm-launch?wanted=true">Buy Now →</a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- ── Free product row ── -->
-      <div style="background:var(--white);border:1px solid var(--rule);border-radius:8px;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
-        <div>
-          <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Free Download</div>
-          <div style="font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:4px;">Project Kickoff Checklist</div>
-          <div style="font-size:0.88rem;color:var(--ink-3);">The 30-day checklist I use at the start of every engagement. No fluff, no filler — just the things that prevent the avoidable problems.</div>
-        </div>
-        <a class="pcf-btn" style="white-space:nowrap;flex-shrink:0;" href="https://brandonstevenspmp.gumroad.com/l/pm-kickoff-checklist?wanted=true">Download Free →</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ─── Contact ─── -->
-  <section id="contact" style="background:var(--white);">
-    <div class="container">
-      <div class="section-header">
-        <h2>Get in Touch</h2>
-      </div>
-      <div class="contact-inner" style="display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start;">
-        <div>
-          <p style="font-size:1rem;color:var(--ink-2);margin-bottom:32px;line-height:1.8;">
-            Whether you're looking for a PM to lead a specific initiative, a long-term contract engagement, or just want to talk through a delivery challenge — I respond to every message within 24 hours.
-          </p>
-          <div class="contact-links">
-            <div class="contact-link-item">
-              <span class="contact-link-label">Email</span>
-              <a href="mailto:BrandonStevensPM@gmail.com">BrandonStevensPM@gmail.com</a>
-            </div>
-            <div class="contact-link-item">
-              <span class="contact-link-label">LinkedIn</span>
-              <a href="https://www.linkedin.com/in/brandon-stevens-pmp" target="_blank" rel="noopener">brandon-stevens-pmp</a>
-            </div>
-            <div class="contact-link-item">
-              <span class="contact-link-label">Location</span>
-              <span>Philadelphia, PA · Remote available</span>
-            </div>
-          </div>
-        </div>
-
-        <form
-          id="contact-form"
-          class="contact-form"
-          action="https://formspree.io/f/xykvnpyn"
-          method="POST"
-          onsubmit="handleFormSubmit(event)"
-        >
-          <input type="text" name="_gotcha" style="display:none" />
-          <div class="form-row">
-            <div class="form-group">
-              <label for="cf-fname">First Name</label>
-              <input id="cf-fname" type="text" name="first_name" placeholder="Jane" required />
-            </div>
-            <div class="form-group">
-              <label for="cf-lname">Last Name</label>
-              <input id="cf-lname" type="text" name="last_name" placeholder="Smith" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="cf-email">Email</label>
-            <input id="cf-email" type="email" name="email" placeholder="jane@company.com" required />
-          </div>
-          <div class="form-group">
-            <label for="cf-type">Engagement Type</label>
-            <select id="cf-type" name="engagement_type">
-              <option value="">Select one</option>
-              <option>Full-Time Employment</option>
-              <option>Contract / Consulting</option>
-              <option>Fractional PM</option>
-              <option>Digital Product Purchase</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="cf-msg">Message</label>
-            <textarea id="cf-msg" name="message" placeholder="Brief description of your project, role, or question..." required></textarea>
-          </div>
-          <button type="submit" class="btn-submit" id="submit-btn">Send Message</button>
-          <div id="form-success" style="display:none;margin-top:14px;font-size:0.88rem;color:#2D6A4F;font-weight:600;">
-            ✓ Message sent — I'll be in touch within 24 hours.
-          </div>
-          <div id="form-error" style="display:none;margin-top:14px;font-size:0.88rem;color:#C0392B;font-weight:600;">
-            Something went wrong. Please email me directly at BrandonStevensPM@gmail.com
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Footer ─── -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-name">Brandon Stevens <span>PMP</span></div>
-      <div class="footer-copy">© 2026 · Philadelphia, PA</div>
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/brandon-stevens-pmp" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:BrandonStevensPM@gmail.com">Email</a>
-        <a href="#hero">Back to top ↑</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Scroll effect on header
-    const header = document.getElementById('site-header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 10);
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+<script>
+/* ---------- Smooth scroll (Lenis) ---------- */
+let lenis;
+if(window.Lenis){
+  lenis = new Lenis({lerp:0.1,smoothWheel:true});
+  function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
+  requestAnimationFrame(raf);
+  if(window.ScrollTrigger){
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add((t)=>{lenis.raf(t*1000);});
+    gsap.ticker.lagSmoothing(0);
+  }
+  // anchor links via lenis
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();lenis.scrollTo(t,{offset:-10});}
     });
+  });
+}
 
-    // Mobile menu
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobile-nav');
-    hamburger.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
-    });
-    function closeMobile() { mobileNav.classList.remove('open'); }
+gsap.registerPlugin(ScrollTrigger);
 
-    // Contact form — Formspree AJAX submission
-    async function handleFormSubmit(e) {
-      e.preventDefault();
-      const form = document.getElementById('contact-form');
-      const btn  = document.getElementById('submit-btn');
-      const ok   = document.getElementById('form-success');
-      const err  = document.getElementById('form-error');
+/* ---------- Nav scrolled state ---------- */
+const nav=document.getElementById('nav');
+const onScroll=()=>{nav.classList.toggle('scrolled',window.scrollY>20);};
+window.addEventListener('scroll',onScroll);onScroll();
 
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-      ok.style.display = 'none';
-      err.style.display = 'none';
+/* ---------- Mobile menu ---------- */
+const mm=document.getElementById('mobileMenu');
+document.getElementById('navToggle').addEventListener('click',()=>mm.classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click',()=>mm.classList.remove('open'));
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
 
-      try {
-        const data = new FormData(form);
-        const res  = await fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
+/* ---------- Hero load animation ---------- */
+// split name lines into chars
+document.querySelectorAll('#heroName .line').forEach(line=>{
+  const text=line.getAttribute('data-text');
+  line.innerHTML='';
+  [...text].forEach(ch=>{
+    const s=document.createElement('span');
+    s.className='char';s.textContent=ch;
+    line.appendChild(s);
+  });
+});
+const tl=gsap.timeline({defaults:{ease:'power4.out'}});
+tl.from('#heroName .char',{yPercent:120,opacity:0,duration:1.2,stagger:0.04})
+  .from('#heroSub',{y:30,opacity:0,duration:0.9},'+=0.0')
+  .from('#heroBtns',{y:30,opacity:0,duration:0.8},'-=0.4')
+  .from('#heroLi',{opacity:0,duration:0.8},'-=0.5');
 
-        if (res.ok) {
-          ok.style.display = 'block';
-          form.reset();
-          btn.textContent = 'Send Message';
-          btn.disabled = false;
-        } else {
-          const json = await res.json();
-          if (json.errors) {
-            err.textContent = json.errors.map(e => e.message).join(', ');
-          }
-          err.style.display = 'block';
-          btn.textContent = 'Send Message';
-          btn.disabled = false;
-        }
-      } catch (_) {
-        err.style.display = 'block';
-        btn.textContent = 'Send Message';
-        btn.disabled = false;
-      }
+// Ken Burns on hero bg
+gsap.fromTo('#heroBg',{scale:1.08},{scale:1,duration:8,ease:'power1.out'});
+
+/* ---------- Generic heading / line reveals ---------- */
+gsap.utils.toArray('.reveal-line').forEach(el=>{
+  gsap.from(el,{
+    y:60,opacity:0,duration:1,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 88%'}
+  });
+});
+
+/* ---------- Stagger cards ---------- */
+[['.services-grid','.svc-card'],['.products-grid','.prod-card']].forEach(([grid,item])=>{
+  gsap.from(grid+' '+item,{
+    y:40,opacity:0,duration:0.7,ease:'power3.out',stagger:0.08,
+    scrollTrigger:{trigger:grid,start:'top 82%'}
+  });
+});
+
+/* ---------- Parallax experience backgrounds ---------- */
+gsap.utils.toArray('.exp-panel').forEach(panel=>{
+  const bg=panel.querySelector('.exp-bg');
+  gsap.to(bg,{yPercent:18,ease:'none',scrollTrigger:{trigger:panel,start:'top bottom',end:'bottom top',scrub:true}});
+});
+
+/* ---------- About photo parallax ---------- */
+const ap=document.getElementById('aboutPhoto');
+if(ap){
+  gsap.to(ap,{yPercent:-12,ease:'none',scrollTrigger:{trigger:'#about',start:'top bottom',end:'bottom top',scrub:true}});
+}
+
+/* ---------- CountUp numbers ---------- */
+gsap.utils.toArray('.count').forEach(el=>{
+  const target=parseFloat(el.getAttribute('data-target'));
+  const decimals=parseInt(el.getAttribute('data-decimals')||'0',10);
+  const obj={v:0};
+  ScrollTrigger.create({
+    trigger:el,start:'top 88%',once:true,
+    onEnter:()=>{
+      gsap.to(obj,{v:target,duration:1.5,ease:'power2.out',
+        onUpdate:()=>{el.textContent=obj.v.toFixed(decimals);}});
     }
-  </script>
+  });
+});
 
+/* ---------- Experience Read More toggles ---------- */
+document.querySelectorAll('[data-toggle]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const ul=btn.parentNode.querySelector('.exp-bullets');
+    const open=ul.classList.toggle('open');
+    btn.textContent=open?'Read Less −':'Read More +';
+    if(lenis)setTimeout(()=>ScrollTrigger.refresh(),650);
+  });
+});
+
+/* ---------- Build marquee tracks (duplicated for seamless loop) ---------- */
+function buildMarquee(id,items){
+  const track=document.getElementById(id);
+  const build=()=>{
+    items.forEach(t=>{
+      const s=document.createElement('span');s.textContent=t;track.appendChild(s);
+      const d=document.createElement('span');d.className='dot';d.textContent='·';track.appendChild(d);
+    });
+  };
+  build();build(); // duplicate for -50% loop
+}
+buildMarquee('trackInd',['ENERGY & UTILITIES','PAYMENTS & FINTECH','HEALTHCARE & EHR','FINANCIAL SERVICES','ENTERPRISE SAAS','INSURANCE','PHARMA/LIFE SCIENCES']);
+buildMarquee('trackTool',['JIRA','SMARTSHEET','MS PROJECT','PRIMAVERA P6','CONFLUENCE','SERVICENOW','POWER BI','TABLEAU','SALESFORCE','MICROSOFT COPILOT','SHAREPOINT','SAP']);
+
+/* ---------- Contact form (Formspree AJAX) ---------- */
+(function(){
+  const form=document.getElementById('contactForm');
+  const btn=form.querySelector('.btn-send');
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    btn.disabled=true;
+    const original=btn.textContent;
+    btn.textContent='Sending…';
+    try{
+      const res=await fetch(form.action,{
+        method:'POST',
+        body:new FormData(form),
+        headers:{'Accept':'application/json'}
+      });
+      if(res.ok){
+        form.style.display='none';
+        document.getElementById('formSuccess').classList.add('show');
+      }else{
+        const data=await res.json().catch(()=>({}));
+        const msg=(data.errors&&data.errors.map(er=>er.message).join(', '))||'Something went wrong. Please email BrandonStevensPM@gmail.com.';
+        alert(msg);
+        btn.disabled=false;btn.textContent=original;
+      }
+    }catch(err){
+      alert('Network error. Please email BrandonStevensPM@gmail.com.');
+      btn.disabled=false;btn.textContent=original;
+    }
+  });
+})();
+</script>
 </body>
 </html>
