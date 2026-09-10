@@ -67,3 +67,62 @@ form.addEventListener('submit', async event => {
     submitButton.innerHTML = label;
   }
 });
+
+// Motion is progressive enhancement: the complete page stays visible without JS.
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const motionAnimations = new Set();
+let revealObserver;
+let motionFrame = 0;
+function playMotion(element, keyframes, options) {
+  if (motionPreference.matches || !element.animate) return;
+  const animation = element.animate(keyframes, options);
+  motionAnimations.add(animation);
+  animation.onfinish = () => motionAnimations.delete(animation);
+}
+function updateScrollMotion() {
+  motionFrame = 0;
+  if (motionPreference.matches) return;
+  const height = document.documentElement.scrollHeight - window.innerHeight;
+  document.querySelector('.reading-progress').style.transform = `scaleX(${height > 0 ? Math.min(1, Math.max(0, window.scrollY / height)) : 0})`;
+  const panorama = document.querySelector('.city-panorama');
+  const rect = panorama.getBoundingClientRect();
+  if (rect.bottom > 0 && rect.top < window.innerHeight) {
+    const offset = Math.max(-35, Math.min(35, (window.innerHeight / 2 - rect.top - rect.height / 2) * .075));
+    panorama.style.setProperty('--city-shift', `${offset}px`);
+  }
+}
+function queueScrollMotion() {
+  if (!motionPreference.matches && !motionFrame) motionFrame = requestAnimationFrame(updateScrollMotion);
+}
+function startMotion() {
+  if (motionPreference.matches) return;
+  document.querySelectorAll('.headline-line').forEach((line, index) => {
+    playMotion(line, [{opacity:0, transform:'translateY(30px)', filter:'blur(5px)'},{opacity:1, transform:'translateY(0)', filter:'blur(0)'}], {duration:850,delay:90 + index * 140,easing:'cubic-bezier(.2,.65,.3,1)',fill:'backwards'});
+  });
+  if ('IntersectionObserver' in window) {
+    revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const element = entry.target;
+        const siblings = [...element.parentElement.children];
+        const stagger = element.matches('.service,.resource,.proof-grid>div') ? (siblings.indexOf(element) % 3) * 85 : 0;
+        playMotion(element,[{opacity:0,transform:'translateY(26px)'},{opacity:1,transform:'translateY(0)'}],{duration:700,delay:stagger,easing:'cubic-bezier(.2,.65,.3,1)',fill:'backwards'});
+        revealObserver.unobserve(element);
+      });
+    },{threshold:.12});
+    document.querySelectorAll('.section-head,.case,.service,.resource,.about-grid,.contact-grid,.proof-grid>div').forEach(element=>revealObserver.observe(element));
+  }
+  queueScrollMotion();
+}
+window.addEventListener('scroll',queueScrollMotion,{passive:true});
+window.addEventListener('resize',queueScrollMotion,{passive:true});
+motionPreference.addEventListener('change',()=>{
+  revealObserver?.disconnect();
+  motionAnimations.forEach(animation=>animation.cancel());
+  motionAnimations.clear();
+  if (motionFrame) cancelAnimationFrame(motionFrame);
+  motionFrame=0;
+  document.querySelector('.city-panorama').style.removeProperty('--city-shift');
+  if (!motionPreference.matches) startMotion();
+});
+startMotion();
